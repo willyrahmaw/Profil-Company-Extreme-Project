@@ -1,28 +1,43 @@
 # ⚡ Extreme Project - Premium Vape Brand Website
 
-Extreme Project adalah platform web showcase, komparasi produk, dan katalog pemesanan multi-channel premium untuk merek vape coil & cotton kelas atas. Website ini dirancang dengan estetika industri modern (*industrial dark/stealth theme*) menggunakan warna aksen oranye kustom (`#ff5500`), kontras tinggi, dan interaksi mikro yang dinamis untuk memberikan kesan eksklusif dan profesional bagi para pengguna.
+Extreme Project adalah platform web showcase, komparasi produk, dan katalog pemesanan multi-channel premium untuk merek vape coil & cotton kelas atas. Website ini dirancang dengan estetika industri modern (*industrial dark/stealth theme*) menggunakan warna aksen oranye kustom (`#ff5500`), kontras tinggi, dan interaksi mikro yang dinamis untuk memberikan kesan eksklusif dan profesional bagi para vapers.
 
 ---
 
 ## 🚀 Fitur Utama
 
 ### 1. Landing Page Publik yang Dinamis & Responsif
-*   **Hero Section Futuristik**: Visualisasi premium yang memukau pengguna pertama kali saat mengunjungi web.
+*   **Hero Section Futuristik**: Visualisasi premium dengan efek glow neon dinamis untuk impresi pertama yang kuat.
 *   **Katalog Terpisah (Split Catalog)**: Pembagian kategori yang jelas antara **Coil** dan **Cotton** dengan interaksi *expandable* menggunakan Alpine.js (`showAllCoils` / `showAllCottons`).
 *   **Filter Spesifikasi Produk**: Slider dinamis yang responsif untuk memfilter produk coil berdasarkan *flavor*, *sweetness*, dan *throat hit*.
-*   **Multi-Channel Ordering Pipeline**: Mengarahkan pembeli langsung ke channel penjualan resmi seperti **WhatsApp**, **Instagram Direct Message**, dan **TikTok Shop** dengan integrasi tautan langsung yang valid.
-*   **Mode Gelap / Terang (Dark & Light Mode)**: Landing page mendukung transisi mulus menggunakan sistem kelas Tailwind `dark:`.
+*   **Sistem Keranjang & WhatsApp Ordering Pipeline**: Mengumpulkan produk ke keranjang belanja lokal (persistent via LocalStorage), mencatat pesanan ke database (`orders` & `order_items`), dan mengalihkan pengguna ke WhatsApp dengan pesan berformat rapi sesuai template dinamis.
+*   **Survey Kepuasan Pelanggan**: Kuesioner interaktif publik di landing page untuk mengumpulkan riset dan opini pelanggan secara langsung.
+*   **Portal Panduan Edukatif (/learn)**: Halaman khusus yang menampilkan artikel edukatif seputar panduan koil/kapas demi meningkatkan *customer research*.
+*   **Mode Gelap / Terang (Dark & Light Mode)**: Transisi mode warna yang mulus di seluruh halaman menggunakan sistem kelas Tailwind `dark:`.
 
-### 2. Panel Admin (Dashboard Manajemen Dashboard)
-*   **Metrik Ringkasan (Stat Cards)**: Menampilkan total stok, nilai aset stok, jumlah produk habis, serta statistik channel toko aktif yang dilengkapi dengan indikator visual *progress bar*.
+### 2. Panel Admin (Dashboard Manajemen Komprehensif)
+*   **Metrik Ringkasan (Stat Cards)**: Menampilkan total stok, nilai aset stok, pesanan masuk, tanggapan survey, serta statistik toko aktif yang dilengkapi dengan indikator visual.
 *   **Manajemen Produk (Products CRUD)**:
-    *   Pengelompokan input form berdasarkan kategori: **Coil** (menggunakan *slider* interaktif nilai 1-5) dan **Cotton** (menggunakan *toggle/checkbox* fitur spesifikasi organik).
+    *   Pengelompokan input form berdasarkan kategori: **Coil** (slider nilai 1-5) dan **Cotton** (toggle spesifikasi organik).
     *   Sistem validasi input yang ketat dan otomatisasi generate *slug* berdasarkan judul produk.
+*   **Manajemen Event & Diskon Aktif (Events CRUD)**:
+    *   Mengatur diskon persentase global dan durasi event.
+    *   Popup promo otomatis di halaman depan saat ada event aktif dan pemotongan harga otomatis di keranjang.
+*   **Manajemen Pengaturan Global & SEO (Settings CRUD)**:
+    *   Mengatur metadata SEO (title, deskripsi, kata kunci), canonical URL, dan skema JSON-LD.
+    *   Unggah logo (terang & gelap), favicon, informasi profil bisnis, dan modifikasi template pesan pesanan WhatsApp.
+*   **Manajemen Riset Survey & Testimoni**:
+    *   Melihat, menganalisis, dan menghapus tanggapan survey pelanggan.
+    *   Mengelola testimoni ulasan pembeli (Reviews) untuk ditampilkan di landing page.
+*   **Manajemen Portal Panduan (Learn Guides CRUD)**:
+    *   Menambahkan, menyunting, dan menghapus artikel panduan edukatif.
 *   **Manajemen Channel Toko (Shops CRUD)**:
-    *   Mendukung penambahan channel penjualan resmi (**TikTok Shop**, **WhatsApp**, **Instagram**).
-    *   Dilengkapi validasi URL khusus sesuai platform (misalnya, tautan WhatsApp wajib diawali `wa.me` atau `api.whatsapp.com`).
+    *   Menambahkan channel penjualan resmi (**TikTok Shop**, **WhatsApp**, **Instagram**) dengan validasi URL platform.
 *   **Ganti Password Admin**: Fitur ubah sandi admin yang aman langsung dari panel pengaturan profil.
-*   **Keamanan Ekstra**: Proteksi konfirmasi JavaScript saat keluar (logout), menghapus data, dan notifikasi sukses saat menyimpan data.
+
+### 3. Optimalisasi Performa & Aset Otomatis
+*   **Konversi WebP Otomatis**: Semua berkas gambar yang diunggah (JPEG, PNG, GIF) dikonversi secara otomatis ke format `.webp` berkualitas tinggi (menggunakan PHP GD & output buffering) demi meminimalkan waktu pemuatan halaman dan ukuran penyimpanan. Pengecualian dilakukan untuk berkas `.ico` agar tetap utuh.
+*   **Render Optimizations**: Pramuat (*preload*) di head untuk aset di atas lipatan (*above-the-fold*), penundaan (*defer*) skrip non-kritis, dan preconnect CDN untuk mempercepat metrik FCP, LCP, dan Speed Index.
 
 ---
 
@@ -31,7 +46,7 @@ Extreme Project adalah platform web showcase, komparasi produk, dan katalog peme
 *   **Framework Utama**: Laravel 13.x (PHP 8.3+)
 *   **Database**: MySQL
 *   **Frontend & Styling**: 
-    *   Tailwind CSS (via CDN untuk portabilitas instan)
+    *   Tailwind CSS v4 (via CDN & browser runtime compiler)
     *   Alpine.js (untuk logika reaktif frontend & state management)
 *   **Developer Tools**: 
     *   PHPUnit & Artisan Test Suite
@@ -39,38 +54,34 @@ Extreme Project adalah platform web showcase, komparasi produk, dan katalog peme
 
 ---
 
-## 🗄️ Skema Database
+## 🗄️ Skema Database Utama
 
-### 1. Tabel `users` (Admin)
+### 1. Tabel `users`
 Digunakan untuk autentikasi admin panel.
-*   `id` (BIGINT, Primary Key, Auto Increment)
-*   `name` (VARCHAR)
-*   `email` (VARCHAR, Unique)
-*   `password` (VARCHAR)
-*   `timestamps` (`created_at`, `updated_at`)
 
 ### 2. Tabel `products`
-Menyimpan data coil dan cotton beserta spesifikasinya dalam format JSON.
-*   `id` (BIGINT, Primary Key, Auto Increment)
-*   `title` (VARCHAR)
-*   `slug` (VARCHAR, Unique)
-*   `category` (ENUM: `coil`, `cotton`)
-*   `price` (DECIMAL 15,2)
-*   `stock` (UNSIGNED INT)
-*   `character_description` (TEXT)
-*   `specifications` (JSON) - Menyimpan struktur spesifikasi:
-    *   *Coil*: `{"flavor": int, "sweetness": int, "throat_hit": int}` (skala 1-5)
-    *   *Cotton*: `{"clean_flavor_delivery": bool, "fast_liquid_absorption": bool, "premium_organic_fiber": bool}`
-*   `timestamps` (`created_at`, `updated_at`)
+Menyimpan data coil dan cotton beserta spesifikasinya dalam format JSON, serta link marketplace jika ada.
 
-### 3. Tabel `shops`
-Menyimpan daftar channel penjualan multi-channel.
-*   `id` (BIGINT, Primary Key, Auto Increment)
-*   `name` (VARCHAR)
-*   `url` (VARCHAR)
-*   `platform` (VARCHAR) - Berisi value: `tiktok`, `whatsapp`, `instagram`
-*   `is_active` (BOOLEAN, Default: `true`)
-*   `timestamps` (`created_at`, `updated_at`)
+### 3. Tabel `settings`
+Menyimpan konfigurasi SEO global, logo (terang/gelap), favicon, profil bisnis, dan template pesan WhatsApp.
+
+### 4. Tabel `events`
+Menyimpan data promo diskon global yang aktif berdasarkan durasi tanggal mulai dan selesai.
+
+### 5. Tabel `orders` & `order_items`
+Mencatat detail pesanan pelanggan sebelum dialihkan ke WhatsApp penjual untuk pencatatan log internal.
+
+### 6. Tabel `survey_responses`
+Menyimpan data kuesioner kepuasan pembeli dari halaman publik.
+
+### 7. Tabel `testimonials`
+Menyimpan ulasan bintang lima dari pembeli untuk ditampilkan di landing page.
+
+### 8. Tabel `learn_guides`
+Menyimpan konten panduan edukasi vape bagi pengguna.
+
+### 9. Tabel `shops`
+Menyimpan daftar channel penjualan multi-channel (**TikTok Shop**, **WhatsApp**, **Instagram**).
 
 ---
 
@@ -79,10 +90,9 @@ Menyimpan daftar channel penjualan multi-channel.
 Ikuti langkah-langkah berikut untuk menjalankan project di lingkungan lokal:
 
 ### 1. Prasyarat Sistem
-*   PHP >= 8.3
+*   PHP >= 8.3 (dengan ekstensi GD aktif untuk konversi WebP)
 *   Composer
 *   MySQL Database Server
-*   Node.js & NPM (opsional, jika diperlukan kompilasi aset tambahan)
 
 ### 2. Langkah Setup
 1.  **Clone / Salin repositori** ke direktori lokal Anda.
@@ -112,13 +122,17 @@ Ikuti langkah-langkah berikut untuk menjalankan project di lingkungan lokal:
     ```bash
     php artisan migrate --seed
     ```
+7.  **Hubungkan Simbolik Link Storage**:
+    ```bash
+    php artisan storage:link
+    ```
 
 ### 3. Menjalankan Server Lokal
-Gunakan perintah artisan bawaan untuk menjalankan web server local:
+Ubah host di `.env` menjadi host lokal Anda atau jalankan perintah server lokal Laravel:
 ```bash
 php artisan serve
 ```
-Buka browser dan akses platform di:
+Akses platform di:
 *   **Landing Page**: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 *   **Admin Panel**: [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
 
@@ -136,15 +150,11 @@ Untuk masuk ke panel admin, gunakan akun demo bawaan berikut (Hanya aktif di env
 
 ## 🔒 Konfigurasi Keamanan
 
-Project ini telah diaudit dan diperkuat dengan standar keamanan web berikut:
-1.  **Proteksi Brute Force (Rate Limiting)**: Route login admin dibatasi menggunakan middleware throttle `throttle:5,1` (maksimal 5 kali percobaan login per menit) untuk menghindari serangan brute force.
-2.  **Security Headers Middleware**: Mengimplementasikan `SecurityHeaders` middleware global yang menambahkan HTTP Header demi mencegah serangan XSS, Clickjacking, dan MIME sniffing:
-    *   `X-Frame-Options: SAMEORIGIN`
-    *   `X-Content-Type-Options: nosniff`
-    *   `X-XSS-Protection: 1; mode=block`
-    *   `Referrer-Policy: no-referrer-when-downgrade`
-3.  **Strict URL Format Validation**: Menghindari input link palsu atau phising dengan memvalidasi domain URL input toko agar wajib sesuai dengan platform yang dipilih (`instagram.com`, `tiktok.com`, `wa.me`).
-4.  **IP Ban System**: Helper kustom `LoginIpBan` untuk menangani aktivitas mencurigakan pada akses autentikasi.
+Project ini telah diperkuat dengan standar keamanan web berikut:
+1.  **Proteksi Brute Force (Rate Limiting)**: Route login admin dibatasi menggunakan middleware throttle `throttle:5,1` (maksimal 5 kali percobaan login per menit).
+2.  **Security Headers Middleware**: Mengimplementasikan `SecurityHeaders` middleware global untuk mencegah serangan XSS, Clickjacking, dan MIME sniffing.
+3.  **Strict URL Format Validation**: Memvalidasi domain URL input toko agar wajib sesuai dengan platform yang dipilih (`instagram.com`, `tiktok.com`, `wa.me`).
+4.  **IP Ban System**: Memblokir IP address secara otomatis untuk jangka waktu tertentu apabila melakukan percobaan login gagal berkali-kali.
 
 ---
 
@@ -157,8 +167,12 @@ php artisan test
 ```
 
 Test coverage mencakup:
-*   `ProductTest`: Pengujian fungsionalitas CRUD produk serta validasi spesifikasi.
-*   `WelcomeProductMenuTest`: Memverifikasi tampilan katalog di landing page dan sistem reaktivitas filter.
-*   `AdminPaginationTest`: Menguji penomoran halaman yang aman di dashboard.
-*   `AdminPasswordTest`: Menguji keabsahan alur pergantian password admin.
+*   `ProductTest`: CRUD produk dan validasi spesifikasi coil/cotton.
+*   `SettingTest`: Unggah logo, favicon, dan integrasi pengaturan global.
+*   `EventTest`: Pembuatan event diskon dan validasi popup.
+*   `SurveyTest`: Penyimpanan respon survey riset pembeli.
+*   `TestimonialTest`: CRUD ulasan bintang lima pelanggan.
+*   `LearnGuideTest`: Manajemen artikel edukatif.
+*   `ImageHelperTest`: Unit test konversi gambar JPG/PNG ke WebP serta pembatalan konversi file ICO.
 *   `LoginIpBanTest`: Memastikan sistem pembatasan IP ketika terjadi percobaan login ilegal bekerja secara akurat.
+
