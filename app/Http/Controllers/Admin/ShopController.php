@@ -43,7 +43,7 @@ class ShopController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'url' => 'required|url|max:255',
-            'platform' => 'required|in:tiktok,whatsapp,instagram',
+            'platform' => 'required|in:tiktok,whatsapp,instagram,blibli,tokopedia,taco',
         ]);
 
         $validated['is_active'] = $request->has('is_active');
@@ -74,7 +74,7 @@ class ShopController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'url' => 'required|url|max:255',
-            'platform' => 'required|in:tiktok,whatsapp,instagram',
+            'platform' => 'required|in:tiktok,whatsapp,instagram,blibli,tokopedia,taco',
         ]);
 
         $validated['is_active'] = $request->has('is_active');

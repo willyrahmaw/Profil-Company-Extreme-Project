@@ -12,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Trust all proxies (needed for ngrok / reverse proxy)
+        $middleware->trustProxies(at: '*');
+
         // Apply security headers to all web responses
         $middleware->web(append: [
             \App\Http\Middleware\BlockBannedIp::class,

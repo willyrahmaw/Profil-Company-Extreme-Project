@@ -15,7 +15,7 @@
                     },
                     colors: {
                         industrial: {
-                            orange: '#ff5500',
+                            orange: '#FF4081',
                             dark: '#0a0a0c',
                             border: '#1c1c22',
                         }

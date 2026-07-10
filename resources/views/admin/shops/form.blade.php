@@ -73,6 +73,9 @@
                     <option value="tiktok">TikTok Shop</option>
                     <option value="whatsapp">WhatsApp</option>
                     <option value="instagram">Instagram</option>
+                    <option value="blibli">Blibli</option>
+                    <option value="tokopedia">Tokopedia</option>
+                    <option value="taco">Taco</option>
                 </select>
                 @error('platform')
                     <p class="mt-1.5 text-xs text-red-550 font-semibold">{{ $message }}</p>

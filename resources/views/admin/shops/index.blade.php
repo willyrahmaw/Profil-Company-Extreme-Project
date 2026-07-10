@@ -102,32 +102,30 @@
     </div>
 
     <!-- Delete Confirmation Modal -->
-    <template x-if="activeDeleteId !== null">
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
-            <div class="bg-zinc-950 border border-zinc-800 rounded-none p-6 max-w-sm w-full shadow-2xl relative" @click.away="activeDeleteId = null">
-                
-                <div class="text-center">
-                    <h3 class="text-sm font-bold tracking-wider text-slate-200 uppercase font-display">Konfirmasi Hapus</h3>
-                    <p class="text-xs text-slate-400 mt-3 leading-relaxed">Apakah Anda yakin ingin menghapus toko ini secara permanen? Pilihan ini tidak akan muncul lagi di halaman depan.</p>
-                </div>
-                
-                <div class="flex items-center gap-3 mt-6">
-                    <button type="button" @click="activeDeleteId = null" 
-                            class="flex-1 py-2 text-xs font-bold uppercase tracking-widest text-slate-450 hover:text-zinc-200 bg-zinc-900 border border-zinc-800 rounded-none transition-all">
-                        Batal
+    <div x-show="activeDeleteId !== null" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" style="display: none;">
+        <div class="bg-zinc-950 border border-zinc-800 rounded-none p-6 max-w-sm w-full shadow-2xl relative" @click.away="activeDeleteId = null">
+            
+            <div class="text-center">
+                <h3 class="text-sm font-bold tracking-wider text-slate-200 uppercase font-display">Konfirmasi Hapus</h3>
+                <p class="text-xs text-slate-400 mt-3 leading-relaxed">Apakah Anda yakin ingin menghapus toko ini secara permanen? Pilihan ini tidak akan muncul lagi di halaman depan.</p>
+            </div>
+            
+            <div class="flex items-center gap-3 mt-6">
+                <button type="button" @click="activeDeleteId = null" 
+                        class="flex-1 py-2 text-xs font-bold uppercase tracking-widest text-slate-450 hover:text-zinc-200 bg-zinc-900 border border-zinc-800 rounded-none transition-all">
+                    Batal
+                </button>
+                <!-- Form submission -->
+                <form :action="'{{ url('admin/shops') }}/' + activeDeleteId" method="POST" class="flex-1">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" 
+                            class="w-full py-2 text-xs font-bold uppercase tracking-widest text-white bg-red-600 hover:bg-red-700 rounded-none transition-all">
+                        Hapus
                     </button>
-                    <!-- Form submission -->
-                    <form :action="`/admin/shops/${activeDeleteId}`" method="POST" class="flex-1">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" 
-                                class="w-full py-2 text-xs font-bold uppercase tracking-widest text-white bg-red-650 hover:bg-red-600 rounded-none transition-all">
-                            Hapus
-                        </button>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-    </template>
+    </div>
 </div>
 @endsection

@@ -24,8 +24,8 @@
                         industrial: {
                             black: '#000000',
                             dark: '#0a0a0c',
-                            orange: '#ff5500',
-                            orangeHover: '#e04b00',
+                            orange: '#FF4081',
+                            orangeHover: '#E91E63',
                             border: '#1c1c22',
                         }
                     }
@@ -37,7 +37,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #000000;
-            background-image: radial-gradient(circle at center, rgba(255, 85, 0, 0.04), transparent 500px);
+            background-image: radial-gradient(circle at center, rgba(255, 64, 129, 0.04), transparent 500px);
         }
         h1, h2, h3, h4, h5, h6, .font-display {
             font-family: 'Space Grotesk', sans-serif;
@@ -49,7 +49,7 @@
     <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
         <!-- Logo -->
         <span class="text-2xl font-black tracking-tighter text-slate-100 font-display flex items-center justify-center gap-1.5 uppercase">
-            <span class="w-3.5 h-3.5 bg-industrial-orange shadow-[0_0_8px_#ff5500]"></span>
+            <span class="w-3.5 h-3.5 bg-industrial-orange shadow-[0_0_8px_#FF4081]"></span>
             EXTREME PROJECT
         </span>
         <h2 class="mt-3 text-xs font-bold tracking-widest text-industrial-orange uppercase font-display">

@@ -21,7 +21,9 @@ class Product extends Model
         'price',
         'stock',
         'character_description',
+        'image_path',
         'specifications',
+        'marketplace_urls',
     ];
 
     /**
@@ -33,6 +35,7 @@ class Product extends Model
     {
         return [
             'specifications' => 'array',
+            'marketplace_urls' => 'array',
             'price' => 'decimal:2',
             'stock' => 'integer',
         ];

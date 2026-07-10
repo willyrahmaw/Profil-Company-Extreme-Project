@@ -22,12 +22,12 @@ class WelcomeProductMenuTest extends TestCase
         $response->assertSee('PRODUK');
     }
 
-    public function test_welcome_shows_more_products_button_when_category_has_at_least_six_products(): void
+    public function test_welcome_shows_more_products_button_when_category_has_at_least_seven_products(): void
     {
         Product::query()->delete();
         Shop::query()->delete();
 
-        for ($i = 1; $i <= 6; $i++) {
+        for ($i = 1; $i <= 7; $i++) {
             Product::create([
                 'title' => "Coil Publik {$i}",
                 'category' => 'coil',
@@ -48,7 +48,7 @@ class WelcomeProductMenuTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('LIHAT PRODUK LAINNYA');
-        $response->assertSee('x-show="6 <= 5 || showAllCoils"', false);
+        $response->assertSee('x-show="7 <= 6 || showAllCoils"', false);
     }
 
     public function test_welcome_hides_more_products_button_when_category_has_less_than_six_products(): void

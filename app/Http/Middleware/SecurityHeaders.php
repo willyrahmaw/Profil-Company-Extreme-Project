@@ -38,6 +38,9 @@ class SecurityHeaders
         $response->headers->remove('X-Powered-By');
         $response->headers->remove('Server');
 
+        // Skip ngrok browser warning interstitial (dev tunnel compatibility)
+        $response->headers->set('ngrok-skip-browser-warning', 'true');
+
         return $response;
     }
 }

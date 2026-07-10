@@ -90,9 +90,11 @@ class AdminPaginationTest extends TestCase
                 'stock' => 20,
                 'character_description' => 'Produk dashboard untuk memastikan tabel ringkas tetap bisa dipaginasi.',
                 'specifications' => [
-                    'clean_flavor_delivery' => true,
-                    'fast_liquid_absorption' => true,
-                    'premium_organic_fiber' => true,
+                    'items' => [
+                        'Clean Flavor Delivery',
+                        'Fast Liquid Absorption',
+                        'Premium Organic Fiber',
+                    ],
                 ],
                 'created_at' => now()->addSeconds($i),
                 'updated_at' => now()->addSeconds($i),

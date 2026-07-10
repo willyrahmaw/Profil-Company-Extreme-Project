@@ -3,7 +3,30 @@
 @section('title', 'Kelola Produk')
 
 @section('content')
-<div class="space-y-8" x-data="{ activeDeleteId: null }">
+<div class="space-y-8" x-data="{ 
+    activeDeleteId: null,
+    async updateStock(id, newStock) {
+        if (newStock === '' || isNaN(newStock) || newStock < 0) return null;
+        try {
+            let response = await fetch('/admin/products/' + id + '/stock', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ stock: newStock })
+            });
+            if (response.ok) {
+                let data = await response.json();
+                return data.stock;
+            }
+        } catch(e) {
+            console.error(e);
+        }
+        return null;
+    }
+}">
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
@@ -47,8 +70,45 @@
                         @foreach ($products as $product)
                             <tr class="hover:bg-zinc-900/30 transition-colors">
                                 <td class="py-4 px-6">
-                                    <div class="font-semibold text-slate-200 text-sm">{{ $product->title }}</div>
-                                    <div class="text-[9px] text-slate-500 font-mono mt-0.5">{{ $product->slug }}</div>
+                                    <div class="flex items-center gap-3">
+                                        {{-- Thumbnail --}}
+                                        <div class="w-10 h-10 bg-black border border-zinc-800 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                                            @if($product->image_path)
+                                                <img src="{{ $product->image_path }}" alt="Thumb" class="h-full w-full object-contain">
+                                            @else
+                                                <span class="text-[8px] font-mono text-zinc-650">N/A</span>
+                                            @endif
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-slate-200 text-sm">{{ $product->title }}</div>
+                                            <div class="text-[9px] text-slate-500 font-mono mt-0.5">{{ $product->slug }}</div>
+                                            @if($product->category === 'coil' && !empty($product->specifications))
+                                                <div class="flex flex-wrap gap-1.5 mt-2">
+                                                    @if(!empty($product->specifications['diameter']))
+                                                        <span class="px-1.5 py-0.5 text-[8px] font-mono bg-zinc-950 border border-zinc-850 text-slate-400" title="Diameter">Diameter: {{ $product->specifications['diameter'] }}</span>
+                                                    @endif
+                                                    @if(!empty($product->specifications['resistance']))
+                                                        <span class="px-1.5 py-0.5 text-[8px] font-mono bg-zinc-950 border border-zinc-850 text-slate-400" title="Ohm/Resistance">Ohm: {{ $product->specifications['resistance'] }}</span>
+                                                    @endif
+                                                    @if(!empty($product->specifications['wrap']))
+                                                        <span class="px-1.5 py-0.5 text-[8px] font-mono bg-zinc-950 border border-zinc-850 text-slate-400" title="Lilitan/Wraps">Lilitan: {{ $product->specifications['wrap'] }}</span>
+                                                    @endif
+                                                    @if(!empty($product->specifications['material']))
+                                                        <span class="px-1.5 py-0.5 text-[8px] font-mono bg-zinc-950 border border-zinc-850 text-slate-400" title="Material/Bahan">Bahan: {{ $product->specifications['material'] }}</span>
+                                                    @endif
+                                                    @if(!empty($product->specifications['durability']))
+                                                        <span class="px-1.5 py-0.5 text-[8px] font-mono bg-zinc-950 border border-zinc-850 text-slate-400" title="Ketahanan/Durability">Ketahanan: {{ $product->specifications['durability'] }}</span>
+                                                    @endif
+                                                </div>
+                                            @elseif($product->category === 'cotton' && !empty($product->specifications['items']))
+                                                <div class="flex flex-wrap gap-1.5 mt-2">
+                                                    @foreach($product->specifications['items'] as $item)
+                                                        <span class="px-1.5 py-0.5 text-[8px] font-mono bg-zinc-950 border border-zinc-850 text-slate-400" title="Fitur Kapas">{{ $item }}</span>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="py-4 px-6">
                                     @if ($product->category === 'coil')
@@ -64,20 +124,24 @@
                                 <td class="py-4 px-6 font-mono font-semibold text-slate-200">
                                     Rp {{ number_format($product->price, 0, ',', '.') }}
                                 </td>
-                                <td class="py-4 px-6 font-semibold uppercase tracking-wider text-[9px]">
-                                    @if ($product->stock === 0)
-                                        <span class="inline-flex items-center px-2 py-0.5 rounded-none bg-black border border-red-500/20 text-red-400">
-                                            Habis
-                                        </span>
-                                    @elseif ($product->stock < 10)
-                                        <span class="inline-flex items-center px-2 py-0.5 rounded-none bg-black border border-industrial-orange/30 text-industrial-orange">
-                                            Sisa {{ $product->stock }}
-                                        </span>
-                                    @else
-                                        <span class="inline-flex items-center px-2 py-0.5 rounded-none bg-black border border-zinc-800 text-slate-400">
-                                            {{ $product->stock }} unit
-                                        </span>
-                                    @endif
+                                <td class="py-4 px-6 text-slate-350" x-data="{ stock: {{ $product->stock }} }">
+                                    <div class="flex items-center gap-1.5 bg-black/40 border border-zinc-800 p-1 w-fit rounded">
+                                        <button type="button" 
+                                                @click="updateStock({{ $product->id }}, stock - 1).then(res => { if(res !== null) stock = res })" 
+                                                class="w-5 h-5 bg-zinc-950 hover:bg-zinc-900 border border-zinc-800 text-slate-400 hover:text-industrial-orange flex items-center justify-center font-bold font-mono rounded transition-colors disabled:opacity-40"
+                                                :disabled="stock <= 0">
+                                            -
+                                        </button>
+                                        <input type="number" 
+                                               x-model.number="stock" 
+                                               @change="updateStock({{ $product->id }}, stock).then(res => { if(res !== null) stock = res })"
+                                               class="w-9 bg-transparent text-center font-mono text-xs text-slate-100 font-bold focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                                        <button type="button" 
+                                                @click="updateStock({{ $product->id }}, stock + 1).then(res => { if(res !== null) stock = res })" 
+                                                class="w-5 h-5 bg-zinc-950 hover:bg-zinc-900 border border-zinc-800 text-slate-400 hover:text-industrial-orange flex items-center justify-center font-bold font-mono rounded transition-colors">
+                                            +
+                                        </button>
+                                    </div>
                                 </td>
                                 <td class="py-4 px-6 text-center">
                                     <div class="flex items-center justify-center gap-2">
@@ -111,32 +175,30 @@
     </div>
 
     <!-- Delete Confirmation Modal -->
-    <template x-if="activeDeleteId !== null">
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
-            <div class="bg-zinc-950 border border-zinc-800 rounded-none p-6 max-w-sm w-full shadow-2xl relative" @click.away="activeDeleteId = null">
-                
-                <div class="text-center">
-                    <h3 class="text-sm font-bold tracking-wider text-slate-200 uppercase font-display">Konfirmasi Hapus</h3>
-                    <p class="text-xs text-slate-400 mt-3 leading-relaxed">Apakah Anda yakin ingin menghapus produk ini secara permanen? Tindakan ini tidak dapat dibatalkan.</p>
-                </div>
-                
-                <div class="flex items-center gap-3 mt-6">
-                    <button type="button" @click="activeDeleteId = null" 
-                            class="flex-1 py-2 text-xs font-bold uppercase tracking-widest text-slate-450 hover:text-zinc-200 bg-zinc-900 border border-zinc-800 rounded-none transition-all">
-                        Batal
+    <div x-show="activeDeleteId !== null" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" style="display: none;">
+        <div class="bg-zinc-950 border border-zinc-800 rounded-none p-6 max-w-sm w-full shadow-2xl relative" @click.away="activeDeleteId = null">
+            
+            <div class="text-center">
+                <h3 class="text-sm font-bold tracking-wider text-slate-200 uppercase font-display">Konfirmasi Hapus</h3>
+                <p class="text-xs text-slate-400 mt-3 leading-relaxed">Apakah Anda yakin ingin menghapus produk ini secara permanen? Tindakan ini tidak dapat dibatalkan.</p>
+            </div>
+            
+            <div class="flex items-center gap-3 mt-6">
+                <button type="button" @click="activeDeleteId = null" 
+                        class="flex-1 py-2 text-xs font-bold uppercase tracking-widest text-slate-450 hover:text-zinc-200 bg-zinc-900 border border-zinc-800 rounded-none transition-all">
+                    Batal
+                </button>
+                <!-- Form submission -->
+                <form :action="'{{ url('admin/products') }}/' + activeDeleteId" method="POST" class="flex-1">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" 
+                            class="w-full py-2 text-xs font-bold uppercase tracking-widest text-white bg-red-600 hover:bg-red-700 rounded-none transition-all">
+                        Hapus
                     </button>
-                    <!-- Form submission -->
-                    <form :action="`/admin/products/${activeDeleteId}`" method="POST" class="flex-1">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" 
-                                class="w-full py-2 text-xs font-bold uppercase tracking-widest text-white bg-red-650 hover:bg-red-600 rounded-none transition-all">
-                            Hapus
-                        </button>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-    </template>
+    </div>
 </div>
 @endsection
