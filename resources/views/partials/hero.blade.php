@@ -11,7 +11,7 @@
                     </div>
 
                     <!-- Headline & Watermark Wrapper -->
-                    <div class="relative w-full flex justify-center items-center py-4">
+                    <div class="relative w-full flex justify-center items-center py-4 mb-20">
                         <!-- Subtle Logo Navbar Watermark behind the text (Centered absolutely without cropping) -->
                         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none flex items-center justify-center opacity-[0.3] dark:opacity-[0.2] select-none">
                             @if($siteSettings && $siteSettings->logo_path)
@@ -26,12 +26,7 @@
                         </div>
 
                         <!-- Headline Text -->
-                        <h1 class="relative z-10 text-2xl sm:text-3xl font-black tracking-tight font-display uppercase leading-tight text-slate-900 dark:text-white transition-colors duration-300 mb-20">
-
-                            EXPERIENCE THE
-                            NEXT LEVEL OF FLAVOR
-
-                        </h1>
+                        <h1 class="relative z-10 w-full text-center text-2xl sm:text-3xl font-black tracking-tight font-display uppercase leading-tight text-slate-900 dark:text-white transition-colors duration-300">EXPERIENCE THE NEXT LEVEL OF FLAVOR</h1>
                     </div>
 
 
