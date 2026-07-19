@@ -55,7 +55,7 @@
                         <div class="space-y-4">
                             <!-- Nama Penerima -->
                             <div>
-                                <label for="buyer_name" class="block text-[10px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase tracking-wider mb-1.5 font-mono">
+                                <label for="buyer_name" class="block text-[10px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase tracking-wider mb-1.5 font-display">
                                     Nama Penerima
                                 </label>
                                 <input type="text" id="buyer_name" x-model="buyerName" required
@@ -65,7 +65,7 @@
 
                             <!-- Alamat Pengiriman -->
                             <div>
-                                <label for="buyer_address" class="block text-[10px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase tracking-wider mb-1.5 font-mono">
+                                <label for="buyer_address" class="block text-[10px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase tracking-wider mb-1.5 font-display">
                                     Alamat Lengkap Pengiriman
                                 </label>
                                 <textarea id="buyer_address" x-model="buyerAddress" required rows="3"
@@ -76,7 +76,7 @@
 
                         <!-- Cart Items List -->
                         <div class="space-y-3">
-                            <label class="block text-[10px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase tracking-wider mb-1 font-mono">
+                            <label class="block text-[10px] font-semibold text-zinc-550 dark:text-zinc-400 uppercase tracking-wider mb-1 font-display">
                                 Daftar Belanjaan Anda
                             </label>
                             
@@ -91,11 +91,11 @@
                                         <!-- Item Info -->
                                         <div class="flex-grow min-w-0">
                                             <div class="text-xs font-bold text-zinc-950 dark:text-white truncate" x-text="item.title"></div>
-                                            <div class="text-[10px] text-zinc-500 font-mono mt-0.5" x-text="'Rp ' + new Intl.NumberFormat('id-ID').format(item.price)"></div>
+                                            <div class="text-[10px] text-zinc-500 font-display mt-0.5" x-text="'Rp ' + new Intl.NumberFormat('id-ID').format(item.price)"></div>
                                             
                                             <!-- Direct purchase links per product -->
                                             <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1.5" x-show="item.marketplace_urls && Object.values(item.marketplace_urls).some(url => url && url !== '')">
-                                                <span class="text-[8px] text-zinc-400 dark:text-zinc-500 font-mono tracking-wider font-semibold">BELI INSTAN:</span>
+                                                <span class="text-[8px] text-zinc-400 dark:text-zinc-500 font-display tracking-wider font-semibold">BELI INSTAN:</span>
                                                 <template x-for="[platform, url] in Object.entries(item.marketplace_urls)" :key="platform">
                                                     <template x-if="url">
                                                         <a :href="url" target="_blank" 
@@ -107,7 +107,7 @@
                                                                 'text-indigo-450 hover:text-indigo-550': platform === 'toco',
                                                                 'text-zinc-400 hover:text-zinc-500': !['shopee', 'tokopedia', 'tiktok', 'blibli', 'toco'].includes(platform)
                                                             }"
-                                                            class="text-[9px] font-black hover:underline transition-colors uppercase font-mono tracking-wide"
+                                                            class="text-[9px] font-black hover:underline transition-colors uppercase font-display tracking-wide"
                                                             x-text="platform">
                                                         </a>
                                                     </template>
@@ -121,7 +121,7 @@
                                                 class="w-6 h-6 rounded bg-zinc-200/60 dark:bg-zinc-800 border border-zinc-300/80 dark:border-zinc-700 text-zinc-800 dark:text-white flex items-center justify-center font-bold text-xs hover:bg-zinc-300 dark:hover:bg-zinc-700 select-none">
                                                 -
                                             </button>
-                                            <span class="text-xs font-mono font-bold text-zinc-900 dark:text-white w-6 text-center" x-text="item.quantity"></span>
+                                            <span class="text-xs font-display font-bold text-zinc-900 dark:text-white w-6 text-center" x-text="item.quantity"></span>
                                             <button type="button" @click="updateCartQty(item.id, item.quantity + 1)"
                                                 class="w-6 h-6 rounded bg-zinc-200/60 dark:bg-zinc-800 border border-zinc-300/80 dark:border-zinc-700 text-zinc-800 dark:text-white flex items-center justify-center font-bold text-xs hover:bg-zinc-300 dark:hover:bg-zinc-700 select-none">
                                                 +
@@ -139,7 +139,7 @@
                                 </template>
                                 
                                 <template x-if="cart.length === 0">
-                                    <div class="p-6 text-center text-xs text-zinc-550 dark:text-zinc-500 font-mono tracking-wider uppercase">
+                                    <div class="p-6 text-center text-xs text-zinc-550 dark:text-zinc-500 font-display tracking-wider uppercase">
                                         [ KERANJANG_KOSONG ]
                                     </div>
                                 </template>
@@ -178,7 +178,7 @@
                             <div class="flex flex-col gap-2">
                                 @foreach($shopeeShops as $sShop)
                                 <a href="{{ $sShop->url }}" target="_blank"
-                                    class="flex items-center justify-center gap-2 px-3 py-2 bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-[10px] font-bold text-slate-800 dark:text-zinc-200 hover:text-industrial-orange dark:hover:text-industrial-orange hover:border-industrial-orange/50 dark:hover:border-industrial-orange/50 transition-all font-mono tracking-wider">
+                                    class="flex items-center justify-center gap-2 px-3 py-2 bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-[10px] font-bold text-slate-800 dark:text-zinc-200 hover:text-industrial-orange dark:hover:text-industrial-orange hover:border-industrial-orange/50 dark:hover:border-industrial-orange/50 transition-all font-display tracking-wider">
                                     <svg class="h-3.5 w-3.5 text-zinc-450 dark:text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                     </svg>
@@ -188,7 +188,7 @@
 
                                 @foreach($tokopediaShops as $tShop)
                                 <a href="{{ $tShop->url }}" target="_blank"
-                                    class="flex items-center justify-center gap-2 px-3 py-2 bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-[10px] font-bold text-slate-800 dark:text-zinc-200 hover:text-industrial-orange dark:hover:text-industrial-orange hover:border-industrial-orange/50 dark:hover:border-industrial-orange/50 transition-all font-mono tracking-wider">
+                                    class="flex items-center justify-center gap-2 px-3 py-2 bg-zinc-50 dark:bg-black border border-zinc-200 dark:border-zinc-800 text-[10px] font-bold text-slate-800 dark:text-zinc-200 hover:text-industrial-orange dark:hover:text-industrial-orange hover:border-industrial-orange/50 dark:hover:border-industrial-orange/50 transition-all font-display tracking-wider">
                                     <svg class="h-3.5 w-3.5 text-zinc-450 dark:text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                                     </svg>

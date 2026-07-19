@@ -12,7 +12,7 @@
                 </div>
 
                 <!-- Column 2: Quick Links -->
-                <div class="space-y-3 font-mono text-[10px]">
+                <div class="space-y-3 font-display text-[10px]">
                     <h4 class="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-bold">Quick Links</h4>
                     <div class="flex flex-col gap-2 uppercase tracking-wider font-semibold">
                         <a href="{{ route('home') }}#products" class="text-zinc-650 dark:text-zinc-450 hover:text-industrial-orange transition-colors">Products Catalog</a>
@@ -25,7 +25,7 @@
                 </div>
 
                 <!-- Column 3: Support -->
-                <div class="space-y-3 font-mono text-[10px]">
+                <div class="space-y-3 font-display text-[10px]">
                     <h4 class="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-bold">Support & Guide</h4>
                     <div class="flex flex-col gap-2 uppercase tracking-wider font-semibold">
                         <a href="{{ route('learn') }}" class="text-zinc-650 dark:text-zinc-450 hover:text-industrial-orange transition-colors">Educational Guides</a>
@@ -36,7 +36,7 @@
                 </div>
 
                 <!-- Column 4: Contact & Socials -->
-                <div class="space-y-3 font-mono text-[10px]">
+                <div class="space-y-3 font-display text-[10px]">
                     <h4 class="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-bold">Social Media</h4>
                     <div class="flex flex-col gap-2 uppercase tracking-wider font-semibold">
                         <a href="https://instagram.com/extreme_project" target="_blank" class="text-zinc-650 dark:text-zinc-450 hover:text-industrial-orange transition-colors">Instagram</a>
@@ -47,7 +47,7 @@
             </div>
 
             <!-- Bottom Border & Copyright -->
-            <div class="border-t border-zinc-200 dark:border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[9px] tracking-widest text-zinc-550 uppercase font-mono transition-colors">
+            <div class="border-t border-zinc-200 dark:border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[9px] tracking-widest text-zinc-550 uppercase font-display transition-colors">
                 <div>
                     &copy; 2026 Extreme Project. Handcrafted Precision. Hak Cipta Dilindungi.
                 </div>

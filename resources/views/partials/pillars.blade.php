@@ -24,7 +24,7 @@
         <!-- Section Header -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start mb-20 border-b border-zinc-200 dark:border-zinc-900 pb-12 transition-colors duration-300">
             <div class="space-y-4 lg:col-span-1">
-                <span class="text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-mono bg-white dark:bg-zinc-950 px-3 py-1 border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-none transition-colors duration-300">
+                <span class="text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-display bg-white dark:bg-zinc-950 px-3 py-1 border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-none transition-colors duration-300">
                     SYSTEM: PILLARS
                 </span>
                 <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white font-display uppercase leading-none mt-6 transition-colors duration-300">
@@ -48,8 +48,8 @@
             <div class="group p-8 rounded-2xl relative bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800/80 hover:border-industrial-orange/60 hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] transition-all duration-300 flex flex-col justify-between min-h-[220px]">
                 <div>
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">BUILD: MANUAL_PRECISION</span>
-                        <div class="flex items-center gap-1.5 bg-green-500/10 px-2 py-0.5 rounded text-[8px] font-mono text-green-500 font-semibold uppercase">
+                        <span class="text-[9px] font-display text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">BUILD: MANUAL_PRECISION</span>
+                        <div class="flex items-center gap-1.5 bg-green-500/10 px-2 py-0.5 rounded text-[8px] font-display text-green-500 font-semibold uppercase">
                             <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Dev: &lt;0.02Ω
                         </div>
                     </div>
@@ -64,8 +64,8 @@
             <div class="group p-8 rounded-2xl relative bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800/80 hover:border-industrial-orange/60 hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] transition-all duration-300 flex flex-col justify-between min-h-[220px]">
                 <div>
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">RAW: GERMAN_US_GRADE</span>
-                        <div class="flex items-center gap-1.5 bg-industrial-orange/10 px-2 py-0.5 rounded text-[8px] font-mono text-industrial-orange font-semibold uppercase">
+                        <span class="text-[9px] font-display text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">RAW: GERMAN_US_GRADE</span>
+                        <div class="flex items-center gap-1.5 bg-industrial-orange/10 px-2 py-0.5 rounded text-[8px] font-display text-industrial-orange font-semibold uppercase">
                             <span class="w-1.5 h-1.5 bg-industrial-orange rounded-full"></span> Purity: 99.8%
                         </div>
                     </div>
@@ -80,8 +80,8 @@
             <div class="group p-8 rounded-2xl relative bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800/80 hover:border-industrial-orange/60 hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] transition-all duration-300 flex flex-col justify-between min-h-[220px]">
                 <div>
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">HEAT: ULTRA_FAST</span>
-                        <div class="flex items-center gap-1.5 bg-blue-500/10 px-2 py-0.5 rounded text-[8px] font-mono text-blue-500 font-semibold uppercase">
+                        <span class="text-[9px] font-display text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">HEAT: ULTRA_FAST</span>
+                        <div class="flex items-center gap-1.5 bg-blue-500/10 px-2 py-0.5 rounded text-[8px] font-display text-blue-500 font-semibold uppercase">
                             <span class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-ping"></span> Ramp-up: ~0.08s
                         </div>
                     </div>
@@ -96,8 +96,8 @@
             <div class="group p-8 rounded-2xl relative bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800/80 hover:border-industrial-orange/60 hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] transition-all duration-300 flex flex-col justify-between min-h-[220px]">
                 <div>
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">AERO: HIGH_DENSITY</span>
-                        <div class="flex items-center gap-1.5 bg-purple-500/10 px-2 py-0.5 rounded text-[8px] font-mono text-purple-500 font-semibold uppercase">
+                        <span class="text-[9px] font-display text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">AERO: HIGH_DENSITY</span>
+                        <div class="flex items-center gap-1.5 bg-purple-500/10 px-2 py-0.5 rounded text-[8px] font-display text-purple-500 font-semibold uppercase">
                             <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span> Cloud: Max
                         </div>
                     </div>
@@ -112,8 +112,8 @@
             <div class="group p-8 rounded-2xl relative bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800/80 hover:border-industrial-orange/60 hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] transition-all duration-300 flex flex-col justify-between min-h-[220px]">
                 <div>
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">FLV: LAYER_EXTRACT</span>
-                        <div class="flex items-center gap-1.5 bg-pink-500/10 px-2 py-0.5 rounded text-[8px] font-mono text-pink-500 font-semibold uppercase">
+                        <span class="text-[9px] font-display text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">FLV: LAYER_EXTRACT</span>
+                        <div class="flex items-center gap-1.5 bg-pink-500/10 px-2 py-0.5 rounded text-[8px] font-display text-pink-500 font-semibold uppercase">
                             <span class="w-1.5 h-1.5 bg-pink-500 rounded-full"></span> Fidelity: 99%
                         </div>
                     </div>
@@ -128,8 +128,8 @@
             <div class="group p-8 rounded-2xl relative bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800/80 hover:border-industrial-orange/60 hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.15)] transition-all duration-300 flex flex-col justify-between min-h-[220px]">
                 <div>
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">HIST: BATTLE_TESTED</span>
-                        <div class="flex items-center gap-1.5 bg-yellow-500/10 px-2 py-0.5 rounded text-[8px] font-mono text-yellow-500 font-semibold uppercase">
+                        <span class="text-[9px] font-display text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">HIST: BATTLE_TESTED</span>
+                        <div class="flex items-center gap-1.5 bg-yellow-500/10 px-2 py-0.5 rounded text-[8px] font-display text-yellow-500 font-semibold uppercase">
                             <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse"></span> Active: 5+ Yrs
                         </div>
                     </div>

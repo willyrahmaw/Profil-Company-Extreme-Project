@@ -1,7 +1,7 @@
         <!-- Ordering Channels Section -->
         <section id="ordering" class="py-24 bg-slate-50 dark:bg-black border-t border-zinc-200 dark:border-zinc-900 transition-colors duration-300">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 flex flex-col items-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-mono mx-auto shadow-sm dark:shadow-none transition-colors duration-300">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-display mx-auto shadow-sm dark:shadow-none transition-colors duration-300">
                     SYS_NODE: ORDER_NOW
                 </div>
                 <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white font-display uppercase transition-colors duration-300">Ready to Experience Extreme Flavor?</h2>
@@ -56,7 +56,7 @@
                 ];
                 @endphp
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto pt-4 font-mono">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto pt-4 font-display">
                     @foreach($platforms as $pKey => $pInfo)
                     @php
                     $platformShops = $shops->where('platform', $pKey)->where('is_active', true);
@@ -91,7 +91,7 @@
                             x-transition:leave="transition ease-in duration-100 transform"
                             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
                             x-transition:leave-end="opacity-0 scale-95 translate-y-2"
-                            class="absolute left-0 right-0 top-full mt-2 z-30 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-2 space-y-1 font-mono text-[10px] shadow-lg dark:shadow-none transition-colors duration-300"
+                            class="absolute left-0 right-0 top-full mt-2 z-30 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-2 space-y-1 font-display text-[10px] shadow-lg dark:shadow-none transition-colors duration-300"
                             style="display: none;"
                             @click.stop>
                             @foreach($platformShops as $shop)

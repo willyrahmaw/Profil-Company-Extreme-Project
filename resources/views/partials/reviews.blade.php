@@ -4,7 +4,7 @@
         
         <!-- Section Header -->
         <div class="space-y-3 mb-16 border-b border-zinc-200 dark:border-zinc-900 pb-8 text-left transition-colors duration-300">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-mono shadow-sm dark:shadow-none transition-colors duration-300">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-display shadow-sm dark:shadow-none transition-colors duration-300">
                 USER_FEEDBACK: SOCIAL_PROOF
             </div>
             <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white font-display uppercase transition-colors duration-300">REVIEW PELANGGAN</h2>
@@ -74,7 +74,7 @@
 
                         <!-- Reviewer Profile -->
                         <div class="flex items-center justify-between gap-4 border-t border-zinc-100 dark:border-zinc-900 pt-6 mt-4">
-                            <div class="flex items-center gap-3 font-mono text-xs">
+                            <div class="flex items-center gap-3 font-display text-xs">
                                 <div class="w-10 h-10 rounded-full bg-industrial-orange/10 border border-industrial-orange/20 text-industrial-orange flex items-center justify-center font-bold font-display text-sm">
                                     {{ $review['avatar'] }}
                                 </div>
@@ -85,7 +85,7 @@
                             </div>
                             
                             <!-- Mini Indicator -->
-                            <div class="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">
+                            <div class="text-[8px] font-display text-zinc-500 uppercase tracking-widest">
                                 Response {{ $loop->iteration }} of {{ $loop->remaining + $loop->iteration }}
                             </div>
                         </div>

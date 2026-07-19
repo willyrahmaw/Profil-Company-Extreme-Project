@@ -49,7 +49,7 @@
                     </svg>
                     <span x-show="cartCount > 0" class="absolute -top-1 -right-1 flex h-4 w-4" x-cloak>
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-industrial-orange opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-4 w-4 bg-industrial-orange text-[8px] font-black text-white items-center justify-center font-mono leading-none" x-text="cartCount"></span>
+                        <span class="relative inline-flex rounded-full h-4 w-4 bg-industrial-orange text-[8px] font-black text-white items-center justify-center font-display leading-none" x-text="cartCount"></span>
                     </span>
                 </button>
 
@@ -143,7 +143,7 @@
     </header>
 
     @if($hasActiveEvent)
-    <div class="bg-industrial-orange text-white text-[10px] font-bold uppercase tracking-[0.2em] py-2.5 px-4 text-center font-mono relative overflow-hidden shadow-inner flex items-center justify-center gap-2">
+    <div class="bg-industrial-orange text-white text-[10px] font-bold uppercase tracking-[0.2em] py-2.5 px-4 text-center font-display relative overflow-hidden shadow-inner flex items-center justify-center gap-2">
         <span class="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>
         <span>EVENT AKTIF: {{ $activeEvent->name }} - DISKON {{ $discountPercentage }}% UNTUK SEMUA PRODUK!</span>
         <span class="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>

@@ -5,7 +5,7 @@
                 <div class="flex flex-col items-center text-center space-y-8">
 
                     <!-- Lab Status Indicator -->
-                    <div class="relative -top-10 md:-top-16 inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-mono shadow-sm dark:shadow-none transition-colors duration-300">
+                    <div class="relative -top-10 md:-top-16 inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-display shadow-sm dark:shadow-none transition-colors duration-300">
                         <span class="w-1.5 h-1.5 bg-industrial-orange rounded-full animate-ping"></span>
                         Precision. Performance. Innovation
                     </div>
@@ -55,19 +55,19 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 w-full max-w-4xl mx-auto pt-8 border-t border-zinc-200/40 dark:border-zinc-900/60 transition-colors">
                         <div class="text-center space-y-1">
                             <div class="text-2xl sm:text-3xl font-black text-industrial-orange font-display">40.000+</div>
-                            <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-mono font-bold">Products Sold</div>
+                            <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-display font-bold">Products Sold</div>
                         </div>
                         <div class="text-center space-y-1">
                             <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-display">6</div>
-                            <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-mono font-bold">Coil Varian</div>
+                            <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-display font-bold">Coil Varian</div>
                         </div>
                         <div class="text-center space-y-1">
                             <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-display">2021</div>
-                            <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-mono font-bold">Established</div>
+                            <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-display font-bold">Established</div>
                         </div>
                         <div class="text-center space-y-1">
                             <div class="text-2xl sm:text-3xl font-black text-industrial-orange font-display">100%</div>
-                            <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-mono font-bold">Handmade Craft</div>
+                            <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-display font-bold">Handmade Craft</div>
                         </div>
                     </div>
 
@@ -83,7 +83,7 @@
                             <div class="absolute -bottom-px -right-px w-2 h-2 border-b border-r border-industrial-orange"></div>
 
                             <div class="space-y-4">
-                                <div class="flex justify-between items-center font-mono text-[7px] text-zinc-400 dark:text-zinc-650 border-b border-zinc-150 dark:border-zinc-900 pb-2">
+                                <div class="flex justify-between items-center font-display text-[7px] text-zinc-400 dark:text-zinc-650 border-b border-zinc-150 dark:border-zinc-900 pb-2">
                                     <span>SYS_REF: COIL_HEATING_SYS</span>
                                     <span class="text-industrial-orange font-bold">HEATING: ACTIVE</span>
                                 </div>
@@ -99,7 +99,7 @@
                                 </p>
                             </div>
 
-                            <div class="mt-4 border-t border-zinc-150 dark:border-zinc-900 pt-2 font-mono text-[7px] text-zinc-400 dark:text-zinc-650 flex justify-between">
+                            <div class="mt-4 border-t border-zinc-150 dark:border-zinc-900 pt-2 font-display text-[7px] text-zinc-400 dark:text-zinc-650 flex justify-between">
                                 <span>RESIST: 0.12 OHM</span>
                                 <span>RMP_UP: INSTANT</span>
                             </div>
@@ -114,7 +114,7 @@
                             <div class="absolute -bottom-px -right-px w-2 h-2 border-b border-r border-industrial-orange"></div>
 
                             <div class="space-y-4">
-                                <div class="flex justify-between items-center font-mono text-[7px] text-zinc-400 dark:text-zinc-650 border-b border-zinc-150 dark:border-zinc-900 pb-2">
+                                <div class="flex justify-between items-center font-display text-[7px] text-zinc-400 dark:text-zinc-650 border-b border-zinc-150 dark:border-zinc-900 pb-2">
                                     <span>SYS_REF: COTTON_WICKING_MED</span>
                                     <span class="text-industrial-orange font-bold">WICKING: 99%</span>
                                 </div>
@@ -130,7 +130,7 @@
                                 </p>
                             </div>
 
-                            <div class="mt-4 border-t border-zinc-150 dark:border-zinc-900 pt-2 font-mono text-[7px] text-zinc-400 dark:text-zinc-650 flex justify-between">
+                            <div class="mt-4 border-t border-zinc-150 dark:border-zinc-900 pt-2 font-display text-[7px] text-zinc-400 dark:text-zinc-650 flex justify-between">
                                 <span>PURITY: 100% ORG</span>
                                 <span>CHEM: FREE</span>
                             </div>

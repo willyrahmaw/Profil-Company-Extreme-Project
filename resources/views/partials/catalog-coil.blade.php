@@ -1,7 +1,7 @@
         <!-- Coil Catalog Section -->
         <section id="catalog-coils" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="space-y-3 mb-12 border-b border-zinc-200/80 dark:border-zinc-900 pb-8 text-left transition-colors duration-300">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-mono shadow-sm dark:shadow-none transition-colors duration-300">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-display shadow-sm dark:shadow-none transition-colors duration-300">
                     CATALOG NODE: COILS
                 </div>
                 <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white font-display uppercase transition-colors duration-300">REAKTOR COIL</h2>
@@ -65,8 +65,8 @@
                 <!-- Step 0: Intro -->
                 <div x-show="step === 0" class="space-y-4">
                     <div class="flex items-center gap-2">
-                        <span class="text-[8px] font-mono text-industrial-orange uppercase tracking-widest font-bold bg-industrial-orange/5 px-2 py-0.5 border border-industrial-orange/20">COIL_FINDER_ENGINE</span>
-                        <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">v1.2.0_beta</span>
+                        <span class="text-[8px] font-display text-industrial-orange uppercase tracking-widest font-bold bg-industrial-orange/5 px-2 py-0.5 border border-industrial-orange/20">COIL_FINDER_ENGINE</span>
+                        <span class="text-[9px] font-display text-zinc-500 uppercase tracking-widest">v1.2.0_beta</span>
                     </div>
                     <h3 class="text-lg font-black text-slate-900 dark:text-white uppercase font-display tracking-wider">Bingung Pilih Coil Yang Pas?</h3>
                     <p class="text-zinc-650 dark:text-zinc-400 text-xs font-sans leading-relaxed max-w-xl">
@@ -79,12 +79,12 @@
 
                 <!-- Step 1: Atomizer Choice -->
                 <div x-show="step === 1" class="space-y-4" x-cloak>
-                    <div class="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">Langkah 1 dari 2: Pilih Atomizer Anda</div>
+                    <div class="text-[8px] font-display text-zinc-500 uppercase tracking-widest">Langkah 1 dari 2: Pilih Atomizer Anda</div>
                     <h3 class="text-base font-bold text-slate-900 dark:text-white uppercase font-display">Tipe Atomizer yang Anda gunakan?</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                         @foreach(['RDA', 'RTA', 'AIO'] as $atom)
                         <button type="button" @click="atomizer = '{{ $atom }}'; step = 2"
-                            class="p-4 rounded-xl border font-mono text-xs font-bold uppercase tracking-wider transition-all duration-150 hover:border-industrial-orange hover:bg-industrial-orange/5"
+                            class="p-4 rounded-xl border font-display text-xs font-bold uppercase tracking-wider transition-all duration-150 hover:border-industrial-orange hover:bg-industrial-orange/5"
                             :class="atomizer === '{{ $atom }}' ? 'border-industrial-orange bg-industrial-orange/10 text-industrial-orange' : 'border-zinc-800 text-zinc-400 bg-zinc-950/60'">
                             {{ $atom }}
                         </button>
@@ -95,12 +95,12 @@
 
                 <!-- Step 2: Liquid Profile -->
                 <div x-show="step === 2" class="space-y-4" x-cloak>
-                    <div class="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">Langkah 2 dari 2: Profil Liquid & Preferensi</div>
+                    <div class="text-[8px] font-display text-zinc-500 uppercase tracking-widest">Langkah 2 dari 2: Profil Liquid & Preferensi</div>
                     <h3 class="text-base font-bold text-slate-900 dark:text-white uppercase font-display">Apa jenis liquid favorit Anda?</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         @foreach(['Creamy', 'Fruit', 'Sweet', 'Menthol'] as $liqType)
                         <button type="button" @click="liquid = '{{ $liqType }}'; preference = '{{ $liqType === 'Creamy' ? 'sweetness' : 'flavor' }}'; findMatch()"
-                            class="p-4 rounded-xl border font-mono text-xs font-bold uppercase tracking-wider transition-all duration-150 hover:border-industrial-orange hover:bg-industrial-orange/5"
+                            class="p-4 rounded-xl border font-display text-xs font-bold uppercase tracking-wider transition-all duration-150 hover:border-industrial-orange hover:bg-industrial-orange/5"
                             :class="liquid === '{{ $liqType }}' ? 'border-industrial-orange bg-industrial-orange/10 text-industrial-orange' : 'border-zinc-800 text-zinc-400 bg-zinc-950/60'">
                             {{ $liqType }}
                         </button>
@@ -113,10 +113,10 @@
                 <div x-show="step === 3" class="space-y-4" x-cloak>
                     <div class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                        <span class="text-[8px] font-mono text-emerald-450 uppercase tracking-widest font-bold">MATCH_FOUND_SUCCESS</span>
+                        <span class="text-[8px] font-display text-emerald-450 uppercase tracking-widest font-bold">MATCH_FOUND_SUCCESS</span>
                     </div>
                     <div class="space-y-2">
-                        <h4 class="text-xs font-mono text-zinc-550 uppercase tracking-widest">Rekomendasi Coil Anda:</h4>
+                        <h4 class="text-xs font-display text-zinc-550 uppercase tracking-widest">Rekomendasi Coil Anda:</h4>
                         <div class="text-xl font-black text-industrial-orange uppercase font-display tracking-wider" x-text="result?.title"></div>
                         <p class="text-zinc-650 dark:text-zinc-300 text-xs font-sans max-w-xl" x-text="result?.desc"></p>
                     </div>
@@ -136,7 +136,7 @@
                 <svg class="mx-auto h-12 w-12 text-zinc-400 dark:text-zinc-800 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
-                <h3 class="mt-4 text-zinc-600 dark:text-zinc-400 font-bold uppercase tracking-wider text-xs font-mono">Stok Coil Depleted</h3>
+                <h3 class="mt-4 text-zinc-600 dark:text-zinc-400 font-bold uppercase tracking-wider text-xs font-display">Stok Coil Depleted</h3>
                 <p class="mt-1 text-zinc-500 dark:text-zinc-500 text-xs">Penyediaan coil buatan tangan sedang dipersiapkan di laboratorium kami.</p>
             </div>
             @else
@@ -150,16 +150,16 @@
                         <img src="{{ $product->image_path ?: '/images/products/coil.png' }}" alt="{{ $product->title }} - Coil Handmade Vape Premium Extreme Project" class="p-4 h-full w-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out dark:invert dark:opacity-85" loading="lazy" decoding="async">
 
                         <!-- Fixed Overlay for Dark/Light Mode -->
-                        <span class="absolute top-3 left-3 text-[8px] font-mono text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ CODE: {{ strtoupper(substr($product->slug, 0, 8)) }} ]</span>
-                        <span class="absolute bottom-3 left-3 text-[8px] font-mono text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ COIL ]</span>
+                        <span class="absolute top-3 left-3 text-[8px] font-display text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ CODE: {{ strtoupper(substr($product->slug, 0, 8)) }} ]</span>
+                        <span class="absolute bottom-3 left-3 text-[8px] font-display text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ COIL ]</span>
 
                         <div class="absolute top-3 right-3 flex items-center">
                             @if($product->stock === 0)
-                            <span class="text-[8px] font-bold text-zinc-500 bg-white dark:bg-zinc-950 border border-zinc-300/80 dark:border-zinc-800 px-2 py-0.5 uppercase tracking-widest font-mono transition-colors duration-300">DEPLETED</span>
+                            <span class="text-[8px] font-bold text-zinc-500 bg-white dark:bg-zinc-950 border border-zinc-300/80 dark:border-zinc-800 px-2 py-0.5 uppercase tracking-widest font-display transition-colors duration-300">DEPLETED</span>
                             @elseif($product->stock < 10)
-                                <span class="text-[8px] font-bold text-black bg-amber-500 px-2 py-0.5 uppercase tracking-widest font-mono animate-pulse">LOW_RESRV</span>
+                                <span class="text-[8px] font-bold text-black bg-amber-500 px-2 py-0.5 uppercase tracking-widest font-display animate-pulse">LOW_RESRV</span>
                                 @else
-                                <span class="text-[8px] font-bold text-white bg-industrial-orange px-2 py-0.5 uppercase tracking-widest font-mono">ONLINE</span>
+                                <span class="text-[8px] font-bold text-white bg-industrial-orange px-2 py-0.5 uppercase tracking-widest font-display">ONLINE</span>
                                 @endif
                         </div>
                     </div>
@@ -167,12 +167,12 @@
                     <div class="p-8 flex-grow flex flex-col justify-between transition-colors duration-300">
                         <div>
                             @if($product->category === 'coil' && !empty($product->specifications['version']))
-                            <span class="text-[8px] font-bold text-industrial-orange uppercase font-mono tracking-widest block mb-1">
+                            <span class="text-[8px] font-bold text-industrial-orange uppercase font-display tracking-widest block mb-1">
                                 [ VERSI_{{ $product->specifications['version'] }} ]
                             </span>
                             @endif
                             <div class="flex items-center gap-2 flex-wrap">
-                                <h3 class="text-lg font-black text-slate-900 dark:text-white tracking-wide uppercase transition-colors group-hover:text-industrial-orange font-mono">
+                                <h3 class="text-lg font-black text-slate-900 dark:text-white tracking-wide uppercase transition-colors group-hover:text-industrial-orange font-display">
                                     {{ $product->title }}
                                 </h3>
                             </div>
@@ -191,7 +191,7 @@
 
                             <!-- Specs -->
                             <div class="space-y-3">
-                                <h4 class="text-[8px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-2 font-mono">[ PARAMETER ]</h4>
+                                <h4 class="text-[8px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-2 font-display">[ PARAMETER ]</h4>
 
                                 <!-- Flavor Stars -->
                                 <div class="flex items-center justify-between">
@@ -252,14 +252,14 @@
                         <!-- Recommendations Box -->
                         @if(!empty($product->specifications['compatible_atomizers']) || !empty($product->specifications['recommended_liquid']) || !empty($product->specifications['recommended_watt']))
                         <div class="mt-3 p-3 bg-industrial-orange/5 border border-industrial-orange/20 rounded-xl space-y-1.5 text-[10px]">
-                            <span class="text-[8px] font-mono text-industrial-orange uppercase tracking-widest block mb-1 font-bold">[ MATCH_RECOMMENDATIONS ]</span>
+                            <span class="text-[8px] font-display text-industrial-orange uppercase tracking-widest block mb-1 font-bold">[ MATCH_RECOMMENDATIONS ]</span>
 
                             @if(!empty($product->specifications['compatible_atomizers']))
                             <div class="flex justify-between border-b border-zinc-200/60 dark:border-zinc-800/30 pb-1">
                                 <span class="text-zinc-500 dark:text-zinc-400 font-display">Compatible:</span>
                                 <div class="flex gap-1 flex-wrap justify-end">
                                     @foreach((array)$product->specifications['compatible_atomizers'] as $atomizer)
-                                    <span class="px-1.5 py-0.5 bg-zinc-200 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 text-[8px] font-mono rounded font-bold uppercase text-slate-800 dark:text-zinc-300">{{ $atomizer }}</span>
+                                    <span class="px-1.5 py-0.5 bg-zinc-200 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 text-[8px] font-display rounded font-bold uppercase text-slate-800 dark:text-zinc-300">{{ $atomizer }}</span>
                                     @endforeach
                                 </div>
                             </div>
@@ -270,7 +270,7 @@
                                 <span class="text-zinc-500 dark:text-zinc-400 font-display">Best For Liquid:</span>
                                 <div class="flex gap-1 flex-wrap justify-end">
                                     @foreach((array)$product->specifications['recommended_liquid'] as $liq)
-                                    <span class="px-1.5 py-0.2 bg-industrial-orange/10 border border-industrial-orange/20 text-[8px] font-mono rounded font-bold uppercase text-industrial-orange">{{ $liq }}</span>
+                                    <span class="px-1.5 py-0.2 bg-industrial-orange/10 border border-industrial-orange/20 text-[8px] font-display rounded font-bold uppercase text-industrial-orange">{{ $liq }}</span>
                                     @endforeach
                                 </div>
                             </div>
@@ -288,8 +288,8 @@
                         {{-- Physical specifications detailed box under description --}}
                         @if(!empty($product->specifications['diameter']) || !empty($product->specifications['resistance']) || !empty($product->specifications['resistance_single']) || !empty($product->specifications['resistance_dual']) || !empty($product->specifications['foot']) || !empty($product->specifications['wrap']) || !empty($product->specifications['material']) || !empty($product->specifications['durability']))
                         <div class="mt-4 p-3.5 bg-zinc-100 dark:bg-zinc-900/40 border border-zinc-300/80 dark:border-zinc-800 rounded-xl space-y-2">
-                            <span class="text-[8px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block mb-1">[ SPECIFICATIONS ]</span>
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[10px] font-mono">
+                            <span class="text-[8px] font-display text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block mb-1">[ SPECIFICATIONS ]</span>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[10px] font-display">
                                 @if(!empty($product->specifications['diameter']))
                                 <div class="flex justify-between border-b border-zinc-200/60 dark:border-zinc-800/30 pb-0.5">
                                     <span class="text-zinc-500 dark:text-zinc-400 font-display">Diameter:</span>

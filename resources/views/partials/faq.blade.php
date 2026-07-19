@@ -4,7 +4,7 @@
         
         <!-- Section Header -->
         <div class="space-y-3 mb-16 border-b border-zinc-200 dark:border-zinc-900 pb-8 text-center transition-colors duration-300">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-mono shadow-sm dark:shadow-none transition-colors duration-300">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-display shadow-sm dark:shadow-none transition-colors duration-300">
                 FAQ: CUSTOMER_SUPPORT
             </div>
             <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white font-display uppercase transition-colors duration-300">FREQUENTLY ASKED QUESTIONS</h2>

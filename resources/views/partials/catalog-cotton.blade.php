@@ -2,7 +2,7 @@
         <!-- Cotton Catalog Section -->
         <section id="catalog-cottons" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-zinc-200 dark:border-zinc-900 transition-colors duration-300">
             <div class="space-y-3 mb-12 border-b border-zinc-200 dark:border-zinc-900 pb-8 text-left transition-colors duration-300">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-mono shadow-sm dark:shadow-none transition-colors duration-300">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-[9px] font-bold text-industrial-orange uppercase tracking-widest font-display shadow-sm dark:shadow-none transition-colors duration-300">
                     CATALOG NODE: COTTON
                 </div>
                 <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white font-display uppercase transition-colors duration-300">SERAT KAPAS ORGANIK</h2>
@@ -22,16 +22,16 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-white via-white/40 dark:from-black dark:via-black/20 to-transparent opacity-85 pointer-events-none transition-colors duration-300"></div>
                         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,64,129,0.06),transparent_60%)] pointer-events-none"></div>
 
-                        <span class="absolute top-3 left-3 text-[8px] font-mono text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ CODE: {{ strtoupper(substr($product->slug, 0, 8)) }} ]</span>
-                        <span class="absolute bottom-3 left-3 text-[8px] font-mono text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ COTTON ]</span>
+                        <span class="absolute top-3 left-3 text-[8px] font-display text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ CODE: {{ strtoupper(substr($product->slug, 0, 8)) }} ]</span>
+                        <span class="absolute bottom-3 left-3 text-[8px] font-display text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ COTTON ]</span>
 
                         <div class="absolute top-3 right-3 flex items-center">
                             @if($product->stock === 0)
-                            <span class="text-[8px] font-bold text-zinc-500 bg-white dark:bg-zinc-950 border border-zinc-300/80 dark:border-zinc-800 px-2 py-0.5 uppercase tracking-widest font-mono transition-colors duration-300">DEPLETED</span>
+                            <span class="text-[8px] font-bold text-zinc-500 bg-white dark:bg-zinc-950 border border-zinc-300/80 dark:border-zinc-800 px-2 py-0.5 uppercase tracking-widest font-display transition-colors duration-300">DEPLETED</span>
                             @elseif($product->stock < 10)
-                                <span class="text-[8px] font-bold text-black bg-amber-500 px-2 py-0.5 uppercase tracking-widest font-mono animate-pulse">LOW_RESRV</span>
+                                <span class="text-[8px] font-bold text-black bg-amber-500 px-2 py-0.5 uppercase tracking-widest font-display animate-pulse">LOW_RESRV</span>
                                 @else
-                                <span class="text-[8px] font-bold text-white bg-industrial-orange px-2 py-0.5 uppercase tracking-widest font-mono">ONLINE</span>
+                                <span class="text-[8px] font-bold text-white bg-industrial-orange px-2 py-0.5 uppercase tracking-widest font-display">ONLINE</span>
                                 @endif
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                     <!-- Card Data details -->
                     <div class="p-8 flex-grow flex flex-col justify-between transition-colors duration-300">
                         <div>
-                            <h3 class="text-lg font-black text-slate-900 dark:text-white tracking-wide uppercase transition-colors group-hover:text-industrial-orange font-mono">
+                            <h3 class="text-lg font-black text-slate-900 dark:text-white tracking-wide uppercase transition-colors group-hover:text-industrial-orange font-display">
                                 {{ $product->title }}
                             </h3>
                             <p class="text-zinc-650 dark:text-zinc-300 text-xs mt-3 leading-relaxed min-h-[35px] font-sans font-light transition-colors duration-300">
@@ -51,7 +51,7 @@
 
                             <!-- Specs -->
                             <div class="space-y-3">
-                                <h4 class="text-[8px] font-bold text-zinc-450 dark:text-zinc-555 uppercase tracking-widest mb-3 font-mono">[ SPECIFICATION_PARAM ]</h4>
+                                <h4 class="text-[8px] font-bold text-zinc-450 dark:text-zinc-555 uppercase tracking-widest mb-3 font-display">[ SPECIFICATION_PARAM ]</h4>
                                 <div class="grid grid-cols-1 gap-2.5">
                                     @if(isset($product->specifications['items']) && is_array($product->specifications['items']) && count($product->specifications['items']) > 0)
                                     @foreach($product->specifications['items'] as $item)
@@ -61,7 +61,7 @@
                                     </div>
                                     @endforeach
                                     @else
-                                    <div class="text-[9px] font-mono text-zinc-500 italic">Spesifikasi standar premium</div>
+                                    <div class="text-[9px] font-display text-zinc-500 italic">Spesifikasi standar premium</div>
                                     @endif
                                 </div>
                             </div>
@@ -73,15 +73,15 @@
                             $effectivePrice = $hasActiveEvent ? $product->price * (1 - ($discountPercentage / 100)) : $product->price;
                             @endphp
                             <div class="flex flex-col">
-                                <span class="text-[9px] text-zinc-500 dark:text-zinc-555 uppercase tracking-widest font-mono">Price</span>
+                                <span class="text-[9px] text-zinc-500 dark:text-zinc-555 uppercase tracking-widest font-display">Price</span>
                                 @if($hasActiveEvent)
                                 <div class="flex items-center gap-1.5 flex-wrap">
-                                    <span class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-mono">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
-                                    <span class="text-base font-bold font-mono text-industrial-orange transition-colors duration-300">Rp {{ number_format($effectivePrice, 0, ',', '.') }}</span>
-                                    <span class="inline-flex items-center px-1.5 py-0.5 text-[8px] font-bold bg-industrial-orange/10 border border-industrial-orange/30 text-industrial-orange uppercase font-mono tracking-wider">{{ $discountPercentage }}% OFF</span>
+                                    <span class="text-xs text-zinc-400 dark:text-zinc-500 line-through font-display">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                                    <span class="text-base font-bold font-display text-industrial-orange transition-colors duration-300">Rp {{ number_format($effectivePrice, 0, ',', '.') }}</span>
+                                    <span class="inline-flex items-center px-1.5 py-0.5 text-[8px] font-bold bg-industrial-orange/10 border border-industrial-orange/30 text-industrial-orange uppercase font-display tracking-wider">{{ $discountPercentage }}% OFF</span>
                                 </div>
                                 @else
-                                <span class="text-base font-bold font-mono text-slate-900 dark:text-white transition-colors duration-300">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                                <span class="text-base font-bold font-display text-slate-900 dark:text-white transition-colors duration-300">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
                                 @endif
                             </div>
 
