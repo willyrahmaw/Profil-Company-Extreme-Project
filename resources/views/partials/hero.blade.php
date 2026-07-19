@@ -26,7 +26,7 @@
                         </div>
 
                         <!-- Headline Text -->
-                        <h1 class="relative z-10 w-full text-center text-2xl sm:text-3xl font-black tracking-tight font-display uppercase leading-tight text-slate-900 dark:text-white transition-colors duration-300">EXPERIENCE THE NEXT LEVEL OF FLAVOR</h1>
+                        <h1 class="relative z-10 w-full text-center text-xl sm:text-3xl font-black tracking-tight font-display uppercase leading-tight text-slate-900 dark:text-white transition-colors duration-300">EXPERIENCE THE NEXT LEVEL OF FLAVOR</h1>
                     </div>
 
 
