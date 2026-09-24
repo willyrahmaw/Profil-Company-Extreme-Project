@@ -19,7 +19,6 @@
                         <img src="{{ $product->image_path ?: '/images/products/cotton.png' }}" alt="{{ $product->title }} - Kapas Vape Organik Premium Extreme Project" class="p-4 h-full w-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" decoding="async">
 
                         <!-- Fixed Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-white via-white/40 dark:from-black dark:via-black/20 to-transparent opacity-85 pointer-events-none transition-colors duration-300"></div>
                         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,64,129,0.06),transparent_60%)] pointer-events-none"></div>
 
                         <span class="absolute top-3 left-3 text-[8px] font-display text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ CODE: {{ strtoupper(substr($product->slug, 0, 8)) }} ]</span>
