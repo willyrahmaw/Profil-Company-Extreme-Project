@@ -53,7 +53,7 @@
                             <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-display font-bold">Products Sold</div>
                         </div>
                         <div class="text-center space-y-1">
-                            <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-display">6</div>
+                            <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white font-display">{{ $coils->count() }}</div>
                             <div class="text-[9px] uppercase tracking-widest text-zinc-550 dark:text-zinc-500 font-display font-bold">Coil Varian</div>
                         </div>
                         <div class="text-center space-y-1">
