@@ -24,7 +24,7 @@ Route::get('/banned', function (Request $request) {
 })->name('banned');
 // Public Landing Page
 Route::get('/', function () {
-    $products = Product::orderBy('created_at', 'desc')->get();
+    $products = Product::orderBy('created_at', 'desc')->orderBy('id', 'desc')->get();
     $shops = Shop::where('is_active', true)->orderBy('created_at', 'asc')->get();
     $now = now();
     $activeEvent = Event::where('is_active', true)
