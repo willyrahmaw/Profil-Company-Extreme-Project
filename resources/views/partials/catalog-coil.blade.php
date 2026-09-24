@@ -147,7 +147,7 @@
 
                     <!-- Product Image Area -->
                     <div class="h-72 w-full relative overflow-hidden bg-zinc-100 dark:bg-black border-b border-zinc-200/60 dark:border-zinc-900 flex items-center justify-center transition-colors duration-300">
-                        <img src="{{ $product->image_path ?: '/images/products/coil.png' }}" alt="{{ $product->title }} - Coil Handmade Vape Premium Extreme Project" class="p-4 h-full w-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out dark:invert dark:opacity-85" loading="lazy" decoding="async">
+                        <img src="{{ $product->image_path ?: '/images/products/coil.png' }}" alt="{{ $product->title }} - Coil Handmade Vape Premium Extreme Project" class="p-4 h-full w-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out dark:opacity-85" loading="lazy" decoding="async">
 
                         <!-- Fixed Overlay for Dark/Light Mode -->
                         <span class="absolute top-3 left-3 text-[8px] font-display text-zinc-500 uppercase tracking-widest bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded">[ CODE: {{ strtoupper(substr($product->slug, 0, 8)) }} ]</span>
