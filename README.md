@@ -33,7 +33,7 @@ Extreme Project adalah platform web showcase, komparasi produk, dan katalog peme
     *   Menambahkan, menyunting, dan menghapus artikel panduan edukatif.
 *   **Manajemen Channel Toko (Shops CRUD)**:
     *   Menambahkan channel penjualan resmi (**TikTok Shop**, **WhatsApp**, **Instagram**) dengan validasi URL platform.
-*   **Ganti Password Admin**: Fitur ubah sandi admin yang aman langsung dari panel pengaturan profil.
+*   **Profil Admin**: Ganti email login dan password admin (wajib konfirmasi password saat ini) dari halaman **Profil**.
 
 ### 3. Optimalisasi Performa & Aset Otomatis
 *   **Konversi WebP Otomatis**: Semua berkas gambar yang diunggah (JPEG, PNG, GIF) dikonversi secara otomatis ke format `.webp` berkualitas tinggi (menggunakan PHP GD & output buffering) demi meminimalkan waktu pemuatan halaman dan ukuran penyimpanan. Pengecualian dilakukan untuk berkas `.ico` agar tetap utuh.
@@ -144,7 +144,7 @@ Untuk masuk ke panel admin, gunakan akun demo bawaan berikut (Hanya aktif di env
 *   **Email**: `admin@vape.com`
 *   **Password**: `password`
 
-> ⚠️ **PENTING**: Segera ubah password Anda di halaman **Ganti Password** setelah pertama kali masuk di panel admin.
+> ⚠️ **PENTING**: Segera ubah email & password Anda di halaman **Profil** setelah pertama kali masuk di panel admin.
 
 ---
 

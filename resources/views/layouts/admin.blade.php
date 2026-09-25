@@ -477,12 +477,12 @@
                         Event
                     </a>
 
-                    <a href="{{ route('admin.password.edit') }}"
-                        class="group flex items-center px-4 py-2.5 text-xs font-bold rounded transition-all duration-200 uppercase tracking-wider {{ request()->routeIs('admin.password.*') ? 'bg-industrial-orange/10 text-industrial-orange border-l-2 border-industrial-orange shadow-[inset_4px_0_12px_rgba(255,85,0,0.05)]' : 'text-slate-455 hover:text-slate-205 hover:bg-zinc-900 border-l-2 border-transparent' }}">
+                    <a href="{{ route('admin.profile.edit') }}"
+                        class="group flex items-center px-4 py-2.5 text-xs font-bold rounded transition-all duration-200 uppercase tracking-wider {{ request()->routeIs('admin.profile.*') ? 'bg-industrial-orange/10 text-industrial-orange border-l-2 border-industrial-orange shadow-[inset_4px_0_12px_rgba(255,85,0,0.05)]' : 'text-slate-455 hover:text-slate-205 hover:bg-zinc-900 border-l-2 border-transparent' }}">
                         <svg class="mr-3 h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
-                        Password
+                        Profil
                     </a>
                     <a href="{{ route('admin.settings.edit') }}"
                         class="group flex items-center px-4 py-2.5 text-xs font-bold rounded transition-all duration-200 uppercase tracking-wider {{ request()->routeIs('admin.settings.*') ? 'bg-industrial-orange/10 text-industrial-orange border-l-2 border-industrial-orange shadow-[inset_4px_0_12px_rgba(255,85,0,0.05)]' : 'text-slate-455 hover:text-slate-205 hover:bg-zinc-900 border-l-2 border-transparent' }}">
@@ -629,8 +629,8 @@
                     <a href="{{ route('admin.events.index') }}" class="block px-3 py-2.5 rounded text-sm font-bold uppercase tracking-wider {{ request()->routeIs('admin.events.*') ? 'bg-industrial-orange/10 text-industrial-orange' : 'text-slate-400 hover:bg-slate-900' }}">
                         Event
                     </a>
-                    <a href="{{ route('admin.password.edit') }}" class="block px-3 py-2.5 rounded text-sm font-bold uppercase tracking-wider {{ request()->routeIs('admin.password.*') ? 'bg-industrial-orange/10 text-industrial-orange' : 'text-slate-400 hover:bg-slate-900' }}">
-                        Password
+                    <a href="{{ route('admin.profile.edit') }}" class="block px-3 py-2.5 rounded text-sm font-bold uppercase tracking-wider {{ request()->routeIs('admin.profile.*') ? 'bg-industrial-orange/10 text-industrial-orange' : 'text-slate-400 hover:bg-slate-900' }}">
+                        Profil
                     </a>
                     <a href="{{ route('admin.settings.edit') }}" class="block px-3 py-2.5 rounded text-sm font-bold uppercase tracking-wider {{ request()->routeIs('admin.settings.*') ? 'bg-industrial-orange/10 text-industrial-orange' : 'text-slate-400 hover:bg-slate-900' }}">
                         Pengaturan

@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -50,8 +50,10 @@ Route::get('/admin/logout', [LoginController::class, 'logout']);
 // Secure Admin Dashboard & CRUD Group
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
-    Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/email', [ProfileController::class, 'updateEmail'])->name('profile.email.update');
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+    Route::redirect('/password', '/admin/profile');
     Route::resource('products', ProductController::class);
     Route::patch('/products/{product}/stock', [ProductController::class, 'updateStock'])->name('products.update-stock');
     Route::resource('shops', ShopController::class);
