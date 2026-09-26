@@ -16,7 +16,7 @@
                     <h4 class="text-zinc-400 dark:text-zinc-500 uppercase tracking-widest font-bold">Quick Links</h4>
                     <div class="flex flex-col gap-2 uppercase tracking-wider font-semibold">
                         <a href="{{ route('home') }}#products" class="text-zinc-650 dark:text-zinc-450 hover:text-industrial-orange transition-colors">Products Catalog</a>
-                        <a href="{{ route('home') }}#catalog-coils" class="text-zinc-650 dark:text-zinc-450 hover:text-industrial-orange transition-colors">Reaktor Coils</a>
+                        <a href="{{ route('home') }}#catalog-coils" class="text-zinc-650 dark:text-zinc-450 hover:text-industrial-orange transition-colors">Coil</a>
                         @if(\App\Models\Product::where('category', 'cotton')->exists())
                         <a href="{{ route('home') }}#catalog-cottons" class="text-zinc-650 dark:text-zinc-450 hover:text-industrial-orange transition-colors">Serat Kapas</a>
                         @endif
