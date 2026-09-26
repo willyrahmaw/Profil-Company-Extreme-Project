@@ -88,7 +88,7 @@
                         {{ $guideItem->title }}
                     </h2>
                     <div class="text-zinc-650 dark:text-zinc-400 text-xs sm:text-sm font-sans font-light leading-relaxed space-y-4">
-                        {!! $guideItem->content !!}
+                        {!! \App\Support\HtmlSanitizer::clean($guideItem->content) !!}
                     </div>
                 </div>
                 @endforeach

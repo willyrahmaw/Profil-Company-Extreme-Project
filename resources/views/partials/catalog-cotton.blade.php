@@ -86,7 +86,7 @@
 
                             @if($product->stock > 0)
                             <button type="button"
-                                @click="addToCart('{{ $product->id }}', '{{ $product->title }}', {{ $effectivePrice }}, '{{ $product->image_path ?: '/images/products/cotton.png' }}', null, {{ json_encode($product->marketplace_urls ?? new \stdClass()) }}); orderModalOpen = true;"
+                                @click="addToCart(@js((string) $product->id), @js($product->title), @js((float) $effectivePrice), @js($product->image_path ?: '/images/products/cotton.png'), null, @js($product->marketplace_urls ?: new \stdClass())); orderModalOpen = true;"
                                 class="stealth-btn-primary px-5 py-2.5 text-[10px] uppercase font-bold tracking-widest text-center flex items-center gap-1">
                                 <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

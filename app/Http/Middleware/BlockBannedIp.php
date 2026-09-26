@@ -16,7 +16,9 @@ class BlockBannedIp
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->routeIs('banned')) {
+        // Bans come from failed admin logins, so only lock the IP out of the admin area.
+        // Keeping the public site open avoids punishing other visitors behind a shared IP (CGNAT).
+        if ($request->routeIs('banned') || ! $request->is('admin', 'admin/*')) {
             return $next($request);
         }
 

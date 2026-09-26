@@ -144,12 +144,10 @@ document.addEventListener('alpine:init', () => {
                 body: JSON.stringify({
                     buyer_name: this.buyerName,
                     buyer_address: this.buyerAddress,
-                    total_price: this.cartTotal,
+                    // Prices are recalculated on the server from the product database
                     items: this.cart.map(item => ({
-                        product_title: item.title,
-                        quantity: item.quantity,
-                        price: item.price,
-                        total_price: item.price * item.quantity
+                        product_id: item.id,
+                        quantity: item.quantity
                     }))
                 })
             })

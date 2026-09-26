@@ -45,10 +45,9 @@ Route::get('/', function () {
 Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/admin/logout', [LoginController::class, 'logout']);
 
 // Secure Admin Dashboard & CRUD Group
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'auth.session'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/email', [ProfileController::class, 'updateEmail'])->name('profile.email.update');
@@ -67,7 +66,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
 // Public Survey / Quiz Research Routes
 Route::get('/research', [\App\Http\Controllers\SurveyController::class, 'show'])->name('research.show');
-Route::post('/research', [\App\Http\Controllers\SurveyController::class, 'store'])->name('research.store');
+Route::post('/research', [\App\Http\Controllers\SurveyController::class, 'store'])->middleware('throttle:5,1')->name('research.store');
 
 // Public Educational Guide Routes
 Route::get('/learn', function () {
@@ -76,7 +75,7 @@ Route::get('/learn', function () {
 })->name('learn');
 
 // Order Logging API Route
-Route::post('/api/orders', [App\Http\Controllers\OrderController::class, 'store'])->name('api.orders.store');
+Route::post('/api/orders', [App\Http\Controllers\OrderController::class, 'store'])->middleware('throttle:10,1')->name('api.orders.store');
 
 // SEO Robots.txt Route
 Route::get('/robots.txt', function () {

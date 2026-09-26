@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
@@ -61,8 +62,12 @@ class ProfileController extends Controller
             'password' => $validated['password'],
         ]);
 
+        // Sign out every other session (requires the auth.session middleware);
+        // this device stays logged in with a refreshed remember-me cookie.
+        Auth::logoutOtherDevices($validated['password']);
+
         return redirect()
             ->route('admin.profile.edit')
-            ->with('success', 'Password admin berhasil diganti.');
+            ->with('success', 'Password admin berhasil diganti. Sesi di perangkat lain telah dikeluarkan.');
     }
 }

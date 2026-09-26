@@ -74,9 +74,32 @@ class LoginIpBanTest extends TestCase
             ]);
         }
 
-        $this->get(route('home'))->assertRedirect(route('banned'));
         $this->get(route('login'))->assertRedirect(route('banned'));
         $this->get(route('banned'))->assertOk()->assertSee('Akses Diblokir');
+    }
+
+    public function test_banned_ip_can_still_browse_the_public_site(): void
+    {
+        for ($attempt = 1; $attempt <= 5; $attempt++) {
+            $this->post(route('login'), [
+                'email' => 'admin@example.com',
+                'password' => 'password-salah',
+            ]);
+        }
+
+        $this->assertNotNull(LoginIpBan::status(request()));
+        $this->get(route('home'))->assertOk();
+        $this->get(route('learn'))->assertOk();
+    }
+
+    public function test_spoofed_forwarded_for_header_is_ignored_from_untrusted_clients(): void
+    {
+        $response = $this->withServerVariables(['REMOTE_ADDR' => '203.0.113.10'])
+            ->withHeader('X-Forwarded-For', '198.51.100.99')
+            ->get(route('login'));
+
+        $response->assertOk();
+        $this->assertSame('203.0.113.10', request()->ip());
     }
 
     public function test_next_ban_duration_is_doubled_after_another_five_failures(): void

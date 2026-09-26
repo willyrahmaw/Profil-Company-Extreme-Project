@@ -123,4 +123,19 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Initial Admin Account
+    |--------------------------------------------------------------------------
+    |
+    | Used by the database seeder to create the first admin account. When no
+    | password is configured, a random one is generated and printed once.
+    |
+    */
+
+    'admin' => [
+        'email' => env('ADMIN_EMAIL', 'admin@vape.com'),
+        'password' => env('ADMIN_PASSWORD'),
+    ],
+
 ];

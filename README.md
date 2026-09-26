@@ -138,13 +138,19 @@ Akses platform di:
 
 ---
 
-## 🔑 Kredensial Admin Default
+## 🔑 Akun Admin Awal
 
-Untuk masuk ke panel admin, gunakan akun demo bawaan berikut (Hanya aktif di environment `local`):
-*   **Email**: `admin@vape.com`
-*   **Password**: `password`
+Akun admin pertama dibuat oleh `php artisan migrate --seed` dari variabel `.env` berikut:
+```env
+ADMIN_EMAIL=admin@vape.com
+ADMIN_PASSWORD=
+```
+*   Jika `ADMIN_PASSWORD` kosong, seeder membuat password acak dan menampilkannya **sekali** di terminal — simpan password tersebut.
+*   Seeder tidak pernah menimpa password admin yang sudah ada.
 
 > ⚠️ **PENTING**: Segera ubah email & password Anda di halaman **Profil** setelah pertama kali masuk di panel admin.
+
+> ⚠️ Saat situs dibuka ke publik (mis. lewat ngrok), pastikan `APP_DEBUG=false` di `.env`.
 
 ---
 
@@ -154,7 +160,12 @@ Project ini telah diperkuat dengan standar keamanan web berikut:
 1.  **Proteksi Brute Force (Rate Limiting)**: Route login admin dibatasi menggunakan middleware throttle `throttle:5,1` (maksimal 5 kali percobaan login per menit).
 2.  **Security Headers Middleware**: Mengimplementasikan `SecurityHeaders` middleware global untuk mencegah serangan XSS, Clickjacking, dan MIME sniffing.
 3.  **Strict URL Format Validation**: Memvalidasi domain URL input toko agar wajib sesuai dengan platform yang dipilih (`instagram.com`, `tiktok.com`, `wa.me`).
-4.  **IP Ban System**: Memblokir IP address secara otomatis untuk jangka waktu tertentu apabila melakukan percobaan login gagal berkali-kali.
+4.  **IP Ban System**: Memblokir IP address dari area `/admin` untuk jangka waktu tertentu apabila melakukan percobaan login gagal berkali-kali. Situs publik tetap bisa diakses (aman untuk pengguna di balik IP bersama/CGNAT).
+5.  **Trusted Proxy Terbatas**: Hanya proxy lokal (`127.0.0.1`, `::1` — agen ngrok / reverse proxy di mesin yang sama) yang dipercaya, sehingga header `X-Forwarded-For` tidak bisa dipalsukan untuk melewati throttle atau IP ban.
+6.  **Content Security Policy & HSTS**: Header CSP membatasi sumber script/style/font ke host yang dipakai situs, memblokir plugin, `<base>` hijacking, dan framing; HSTS dikirim saat diakses lewat HTTPS.
+7.  **Validasi Endpoint Publik**: `POST /api/orders` (10/menit) dan `POST /research` (5/menit) dibatasi rate limit. Harga pesanan dihitung ulang di server dari database (termasuk diskon event), dan jawaban survei hanya menerima opsi yang valid.
+8.  **Sanitasi HTML**: Konten panduan edukasi disaring dengan HTMLPurifier sebelum ditampilkan; data yang disisipkan ke JavaScript/JSON-LD di-escape dengan aman. Upload SVG tidak diizinkan.
+9.  **Keamanan Sesi**: Mengganti password otomatis mengeluarkan sesi di perangkat lain, dan logout hanya bisa lewat `POST`.
 
 ---
 
@@ -175,4 +186,7 @@ Test coverage mencakup:
 *   `LearnGuideTest`: Manajemen artikel edukatif.
 *   `ImageHelperTest`: Unit test konversi gambar JPG/PNG ke WebP serta pembatalan konversi file ICO.
 *   `LoginIpBanTest`: Memastikan sistem pembatasan IP ketika terjadi percobaan login ilegal bekerja secara akurat.
+*   `AdminProfileTest`: Ganti email & password admin dari halaman Profil.
+*   `OrderTest`: Harga pesanan dihitung di server, diskon event, validasi input, dan rate limit.
+*   `SecurityHardeningTest`: Kredensial default, seeder, CSP/HSTS, sanitasi HTML, escaping, upload SVG, validasi survei, dan logout sesi lain.
 

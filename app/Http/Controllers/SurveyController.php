@@ -6,12 +6,18 @@ namespace App\Http\Controllers;
 
 use App\Models\SurveyResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SurveyController extends Controller
 {
     public function show()
     {
-        $survey = [
+        return view('survey', ['survey' => $this->definition()]);
+    }
+
+    private function definition(): array
+    {
+        return [
             "research_title" => "EXTREME PROJECT - Customer Experience & Website Research",
             "description" => "Kami sedang mengembangkan website resmi EXTREME PROJECT agar menjadi pusat e-commerce sekaligus pusat edukasi. Mohon luangkan waktu 5–10 menit untuk membantu kami dengan menjawab beberapa pertanyaan berikut.",
             "sections" => [
@@ -352,50 +358,56 @@ class SurveyController extends Controller
                 ]
             ]
         ];
-
-        return view('survey', compact('survey'));
     }
 
     public function store(Request $request)
     {
-        // Define validation rules based on required questions
-        $validationRules = [
-            'answers.Q1' => 'required|string',
-            'answers.Q2' => 'required|string',
-            'answers.Q3' => 'required|array|min:1',
-            'answers.Q4' => 'required|string',
-            'answers.Q5' => 'required|string',
-            'answers.Q6' => 'required|integer|between:1,10',
-            'answers.Q7' => 'required|integer|between:1,10',
-            'answers.Q8' => 'required|string',
-            'answers.Q9' => 'required|string',
-            'answers.Q10' => 'required|array|min:1',
-            'answers.Q11' => 'required|string',
-            'answers.Q12' => 'required|string',
-            'answers.Q13' => 'required|array|min:1',
-            'answers.Q14' => 'required|string',
-            'answers.Q15' => 'nullable|array', // Q15 is required: false in JSON
-            'answers.Q16' => 'required|string',
-            'answers.Q17' => 'required|array|min:1',
-            'answers.Q18' => 'required|string',
-            'answers.Q19' => 'required|string',
-            'answers.Q20' => 'required|array|min:1',
-            'answers.Q21' => 'required|array',
-            'answers.Q21.*' => 'required|integer|between:1,10',
-            'answers.Q22' => 'required|string',
-            'answers.Q23' => 'required|string',
-        ];
+        $rules = [];
 
-        $request->validate($validationRules, [
+        foreach ($this->definition()['sections'] as $section) {
+            foreach ($section['questions'] as $question) {
+                $key = 'answers.'.$question['id'];
+                $presence = $question['required'] ? 'required' : 'nullable';
+
+                switch ($question['type']) {
+                    case 'single_choice':
+                        $rules[$key] = [$presence, 'string', Rule::in($question['options'])];
+                        break;
+                    case 'multiple_choice':
+                        $rules[$key] = [$presence, 'array', $question['required'] ? 'min:1' : 'min:0', 'max:'.count($question['options'])];
+                        $rules[$key.'.*'] = ['string', 'distinct', Rule::in($question['options'])];
+                        break;
+                    case 'rating':
+                        $rules[$key] = [$presence, 'integer', 'between:'.$question['scale']['min'].','.$question['scale']['max']];
+                        break;
+                    case 'long_text':
+                        $rules[$key] = [$presence, 'string', 'max:5000'];
+                        break;
+                    case 'matrix_rating':
+                        $rowKeys = array_map(fn (string $row) => str_replace(' ', '_', $row), $question['rows']);
+                        $rules[$key] = [$presence, 'array:'.implode(',', $rowKeys)];
+                        foreach ($rowKeys as $rowKey) {
+                            $rules[$key.'.'.$rowKey] = ['required', 'integer', 'between:'.$question['scale']['min'].','.$question['scale']['max']];
+                        }
+                        break;
+                }
+            }
+        }
+
+        $validated = $request->validate($rules, [
             'answers.*.required' => 'Pertanyaan ini wajib dijawab.',
             'answers.*.min' => 'Pilih minimal :min opsi.',
+            'answers.*.in' => 'Pilihan jawaban tidak valid.',
+            'answers.*.*.in' => 'Pilihan jawaban tidak valid.',
+            'answers.*.max' => 'Jawaban terlalu panjang (maksimal :max karakter).',
             'answers.Q21.*.required' => 'Semua baris penilaian wajib diisi.',
         ]);
 
         SurveyResponse::create([
             'ip_address' => $request->ip(),
             'session_id' => session()->getId(),
-            'answers' => $request->input('answers'),
+            // Only store answers that passed validation; unknown keys are dropped.
+            'answers' => $validated['answers'],
         ]);
 
         return redirect()->route('research.show')->with('success_survey', 'Terima kasih banyak atas partisipasi Anda! Masukan Anda sangat berharga bagi pengembangan EXTREME PROJECT.');

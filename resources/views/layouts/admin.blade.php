@@ -532,7 +532,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-[11px] font-bold text-slate-300 leading-none uppercase tracking-wide">{{ Auth::user()->name ?? 'Manager' }}</p>
-                            <p class="text-[9px] text-slate-500 mt-1">{{ Auth::user()->email ?? 'admin@vape.com' }}</p>
+                            <p class="text-[9px] text-slate-500 mt-1">{{ Auth::user()->email }}</p>
                         </div>
                     </div>
 
@@ -652,7 +652,7 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">{{ Auth::user()->name ?? 'Manager' }}</p>
-                            <p class="text-[10px] text-slate-500 font-mono">{{ Auth::user()->email ?? 'admin@vape.com' }}</p>
+                            <p class="text-[10px] text-slate-500 font-mono">{{ Auth::user()->email }}</p>
                         </div>
                         <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin keluar dari panel admin?');">
                             @csrf

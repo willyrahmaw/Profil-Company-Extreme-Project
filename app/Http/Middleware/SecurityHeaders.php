@@ -34,6 +34,27 @@ class SecurityHeaders
         // Limit browser feature access
         $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
 
+        // Content Security Policy. 'unsafe-inline'/'unsafe-eval' are still required by the
+        // inline scripts, the Tailwind browser runtime and Alpine.js, but the policy blocks
+        // plugins, <base> hijacking, foreign form targets, framing and unknown script hosts.
+        $response->headers->set('Content-Security-Policy', implode('; ', [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdn.tailwindcss.com https://www.googletagmanager.com",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+            "font-src 'self' data: https://fonts.gstatic.com",
+            "img-src 'self' data: blob: https:",
+            "connect-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
+            "object-src 'none'",
+            "base-uri 'self'",
+            "form-action 'self'",
+            "frame-ancestors 'self'",
+        ]));
+
+        // Force HTTPS for a year once the site has been reached over HTTPS
+        if ($request->isSecure()) {
+            $response->headers->set('Strict-Transport-Security', 'max-age=31536000');
+        }
+
         // Remove server disclosure header
         $response->headers->remove('X-Powered-By');
         $response->headers->remove('Server');

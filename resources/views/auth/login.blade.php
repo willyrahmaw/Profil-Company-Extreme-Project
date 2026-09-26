@@ -62,17 +62,7 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
         <div class="bg-industrial-dark py-8 px-6 border border-industrial-border rounded sm:px-10 shadow-2xl relative overflow-hidden">
-            
-            @env('local')
-            {{-- ⚠️ Hanya tampil di local environment — TIDAK tampil di production --}}
-            <div class="mb-6 p-4 rounded bg-black border border-industrial-orange/20 text-xs text-slate-400">
-                <div class="flex items-center text-industrial-orange font-bold mb-1 tracking-widest uppercase font-display text-[9px]">
-                    KUNCI AKSES MASUK (DEV ONLY)
-                </div>
-                <p class="mt-1">Email: <span class="text-slate-200 font-mono select-all font-semibold">admin@vape.com</span></p>
-                <p>Password: <span class="text-slate-200 font-mono select-all font-semibold">password</span></p>
-            </div>
-            @endenv
+
 
             <!-- Validation Errors -->
             @if ($errors->any())
@@ -96,7 +86,7 @@
                     <div class="mt-1.5">
                         <input id="email" name="email" type="email" autocomplete="email" required value="{{ old('email') }}"
                                class="block w-full rounded bg-black border border-industrial-border text-slate-100 px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-industrial-orange focus:border-transparent transition-all placeholder-slate-800 font-medium"
-                               placeholder="admin@vape.com">
+                               placeholder="email@domain.com">
                     </div>
                 </div>
 

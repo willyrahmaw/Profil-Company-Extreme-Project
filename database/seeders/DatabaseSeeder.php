@@ -11,6 +11,7 @@ use App\Models\Testimonial;
 use App\Models\LearnGuide;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,14 +20,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Create Admin User
-        User::updateOrCreate(
-            ['email' => 'admin@vape.com'],
-            [
+        // 1. Create Admin User (never overwrite an existing admin's password)
+        $adminEmail = config('app.admin.email');
+
+        if (! User::where('email', $adminEmail)->exists()) {
+            $adminPassword = config('app.admin.password') ?: Str::password(20);
+
+            User::create([
                 'name' => 'Admin Vape',
-                'password' => Hash::make('password'),
-            ]
-        );
+                'email' => $adminEmail,
+                'password' => Hash::make($adminPassword),
+            ]);
+
+            if (! config('app.admin.password')) {
+                $this->command?->warn("Akun admin dibuat: {$adminEmail} / {$adminPassword}");
+                $this->command?->warn('Simpan password ini, lalu ganti lewat halaman Profil.');
+            }
+        }
 
         // 2. Create Seed Products
         Product::updateOrCreate(

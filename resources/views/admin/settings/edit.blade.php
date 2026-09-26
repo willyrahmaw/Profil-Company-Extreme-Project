@@ -130,8 +130,8 @@
                         @endif
                     </div>
                     <div class="flex-grow">
-                        <label class="block text-[9px] font-semibold text-slate-500 uppercase tracking-wider mb-1">Pilih File (.png/.svg/.jpg, maks 2MB)</label>
-                        <input type="file" name="logo" accept=".png,.svg,.jpg,.jpeg,.webp"
+                        <label class="block text-[9px] font-semibold text-slate-500 uppercase tracking-wider mb-1">Pilih File (.png/.jpg/.webp, maks 2MB)</label>
+                        <input type="file" name="logo" accept=".png,.jpg,.jpeg,.webp"
                                class="block w-full text-xs text-zinc-400 file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-zinc-800 file:text-white hover:file:bg-zinc-700 cursor-pointer">
                     </div>
                 </div>
@@ -152,8 +152,8 @@
                         @endif
                     </div>
                     <div class="flex-grow">
-                        <label class="block text-[9px] font-semibold text-slate-500 uppercase tracking-wider mb-1">Pilih File (.png/.svg/.jpg, maks 2MB)</label>
-                        <input type="file" name="logo_light" accept=".png,.svg,.jpg,.jpeg,.webp"
+                        <label class="block text-[9px] font-semibold text-slate-500 uppercase tracking-wider mb-1">Pilih File (.png/.jpg/.webp, maks 2MB)</label>
+                        <input type="file" name="logo_light" accept=".png,.jpg,.jpeg,.webp"
                                class="block w-full text-xs text-zinc-400 file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-zinc-800 file:text-white hover:file:bg-zinc-700 cursor-pointer">
                     </div>
                 </div>

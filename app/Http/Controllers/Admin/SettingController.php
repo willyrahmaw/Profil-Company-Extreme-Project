@@ -41,8 +41,8 @@ class SettingController extends Controller
             'meta_keywords'        => 'nullable|string',
             // Files
             'favicon'              => 'nullable|file|mimes:ico,png,jpg,jpeg|max:1024',
-            'logo'                 => 'nullable|file|mimes:png,jpg,jpeg,svg,webp|max:2048',
-            'logo_light'           => 'nullable|file|mimes:png,jpg,jpeg,svg,webp|max:2048',
+            'logo'                 => 'nullable|file|mimes:png,jpg,jpeg,webp|max:2048',
+            'logo_light'           => 'nullable|file|mimes:png,jpg,jpeg,webp|max:2048',
             // Open Graph
             'og_title'             => 'nullable|string|max:255',
             'og_description'       => 'nullable|string',

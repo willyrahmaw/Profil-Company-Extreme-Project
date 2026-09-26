@@ -120,7 +120,7 @@
             $schemaData['telephone'] = $bizPhone;
         }
     @endphp
-    <script type="application/ld+json">{!! json_encode($schemaData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}</script>
+    <script type="application/ld+json">{!! json_encode($schemaData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_HEX_AMP) !!}</script>
 
     {{-- ═══════════════════════════════════════════════
          GOOGLE FONTS
@@ -165,11 +165,14 @@
     @if($seo && $seo->logo_light_path)
     <link rel="preload" as="image" href="{{ $seo->logo_light_path }}" fetchpriority="high">
     @endif
+    {{-- Hero images only appear on the home page --}}
+    @if(request()->routeIs('home'))
     <link rel="preload" as="image" href="{{ asset('images/profil/ohm.png') }}" fetchpriority="high">
     <link rel="preload" as="image" href="{{ asset('images/profil/cotton.png') }}" fetchpriority="high">
+    @endif
 
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
-    <script src="{{ asset('js/welcome.js') }}" defer></script>
+    <script src="{{ asset('js/welcome.js') }}?v={{ filemtime(public_path('js/welcome.js')) }}" defer></script>
 
     {{-- ═══════════════════════════════════════════════
          ALPINE.JS

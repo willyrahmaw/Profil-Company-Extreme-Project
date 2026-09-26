@@ -123,7 +123,7 @@
         </div>
 
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
-            <p class="text-xs text-slate-500">Gunakan minimal 8 karakter. Setelah disimpan, login berikutnya memakai password baru.</p>
+            <p class="text-xs text-slate-500">Gunakan minimal 8 karakter. Setelah disimpan, sesi di perangkat lain otomatis dikeluarkan.</p>
             <button type="submit" class="stealth-btn-primary inline-flex items-center justify-center px-5 py-3 rounded text-xs font-bold uppercase tracking-wider">
                 Simpan Password
             </button>

@@ -35,7 +35,7 @@ class ProductRequest extends FormRequest
             'price' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
             'character_description' => ['required', 'string'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
             'image_path' => ['nullable', 'string'],
             'marketplace_urls' => ['nullable', 'array'],
             'marketplace_urls.*' => ['nullable', 'url', 'max:2048'],

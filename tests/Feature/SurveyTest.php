@@ -40,7 +40,7 @@ class SurveyTest extends TestCase
             'Q7' => 9,
             'Q8' => 'Sangat Paham',
             'Q9' => 'Tidak ada yang membingungkan.',
-            'Q10' => ['Flavor', 'Price'],
+            'Q10' => ['Flavor', 'Harga'],
             'Q11' => 'Semua sudah cukup jelas.',
             'Q12' => 'Ya',
             'Q13' => ['Cara Memilih Coil'],
